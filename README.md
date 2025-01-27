@@ -2,7 +2,7 @@
 
 **Aspiring Software Developer**
 
-Welcome to my GitHub! I’m passionate about building innovative software, tackling challenges, and sharing impactful projects. Below, you’ll find a curated selection of my work. 🚀
+Welcome to my GitHub! I’m passionate about building innovative software, tackling challenges, and sharing impactful projects. Below, you’ll find a curated selection of my work. 
 
 ---
 
