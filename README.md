@@ -1,44 +1,57 @@
-# Welcome to my GitHub
+# Hey there! I'm Neev Gupta, a high school senior in ATX.
 
-I'm [Your Name], a [Your Title/Profession, e.g., "Software Developer", "Data Scientist"] with a passion for [related interests, e.g., "building intuitive software", "solving real-world problems with code", or "turning data into insights"]. This is where I share my journey, showcase my favorite projects, and explore ideas. 🚀
+**Aspiring Software Developer**
 
----
-
-## 🌟 Featured Projects
-
-Here are some of the projects I’m most proud of:
-
-- **[Project 1 Name](#)**: *[Brief description, e.g., "A web app that helps users track their fitness goals."]*
-- **[Project 2 Name](#)**: *[Brief description, e.g., "An AI-powered chatbot for personal productivity."]*
-- **[Project 3 Name](#)**: *[Brief description, e.g., "A library for simplifying API integrations."]*
-
-Check out my repositories to see more! 💡
+Welcome to my GitHub! I’m passionate about building innovative software, tackling challenges, and sharing impactful projects. Below, you’ll find a curated selection of my work. 🚀
 
 ---
 
-## 👩‍💻 About Me
+## Featured Projects
 
-I’m a [Your Field/Interest, e.g., "self-taught programmer", "CS graduate", etc.] with a knack for [list a few of your skills/interests, e.g., "clean code, design patterns, and user-centric software"]. 
-
-### A little more about me:
-- 🔭 I’m currently working on **[current project or focus area, e.g., building scalable web applications]**.
-- 🌱 I’m currently learning **[new technology/language, e.g., TypeScript, machine learning, etc.]**.
-- 📫 Let's connect on [LinkedIn](#) or visit my [website/portfolio](#).
-
----
-
-## 🛠️ Skills & Interests
-
-- Programming Languages: [e.g., Python, JavaScript, C++]
-- Frameworks & Tools: [e.g., React, Node.js, Django]
-- Interests: [e.g., Open Source, AI, Blockchain]
+### [Neural Network Visualization](https://github.com/guptaneev/karpathy_micrograd_from_scratch)  
+*Inspired by Andrej Karpathy's Micrograd.*  
+Engineered a neural network and computational graph from scratch, implementing backpropagation with automatic differentiation to efficiently calculate gradients. Developed visualization tools for forward/backward passes and validated results against PyTorch.  
+**Tech:** Python | NumPy | Matplotlib | Neural Networks  
+**🔗** [GitHub Repo](https://github.com/guptaneev/karpathy_micrograd_from_scratch)
 
 ---
 
-## 🔍 What I’m Looking For
-
-I’m open to [type of collaboration you're looking for, e.g., "collaborations on open-source projects", "freelance opportunities", etc.]. Feel free to reach out if you’re interested in working together!
+### [Mood-Based Playlist Generator (In Progress)](https://github.com/guptaneev/mood-based_playlist_generator)  
+*IB Computer Science HL Class Project.*  
+Designed a GUI-based playlist generator powered by mood analysis algorithms. Built an intuitive front-end using customtkinter and JSON for storage and detailed technical documentation (UML diagrams, wireframes).  
+**Tech:** Python | customtkinter | JSON | GUI Development  
+**🔗** [GitHub Repo](https://github.com/guptaneev/mood-based_playlist_generator)
 
 ---
 
-Thanks for visiting! ✨ Let’s create something amazing.
+### [Adoore - City Comparison Tool](https://github.com/guptaneev/adoore)  
+*ZondaHome Internship Project.*  
+Built a full-stack tool for cross-city housing comparison using Angular and Java back-end. Leveraged the BDX NewHomeSource API and incorporated Chart.js for visualizations to compare metrics like price/sqft and community amenities.  
+**Tech:** Angular | Java | REST API | Chart.js  
+**🔗** [GitHub Repo](https://github.com/guptaneev/adoore)
+
+---
+
+## Skills
+
+- **Languages:** Python, Java, HTML, CSS, JavaScript  
+- **Libraries & Frameworks:** Angular, NumPy, customtkinter, Matplotlib  
+- **Expertise:** Neural Networks, Full-Stack Development, GUI Development, API Integration, Data Visualization, iOS Development
+
+---
+
+## What I’m Looking For
+
+I’m open to collaborating on **open-source projects**, exploring **machine learning**, and creating impactful tools in **full-stack development** or **mobile app development**. If you're interested in working together, feel free to reach out!
+
+---
+
+## My Links!
+
+- [LinkedIn](https://www.linkedin.com/in/neevgupta/)  
+- [Personal Website](https://neevgupta.vercel.app/)
+- [Published IOS Application](https://apps.apple.com/us/app/endure/id6670519456)
+
+---
+
+Thanks for stopping by! Let’s connect & build something amazing.
