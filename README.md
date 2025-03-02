@@ -49,7 +49,7 @@ I’m open to collaborating on **open-source projects**, exploring **machine lea
 ## My Links!
 
 - [LinkedIn](https://www.linkedin.com/in/neevgupta/)  
-- [Personal Website](https://neevgupta.vercel.app/)
+- [Personal Website](https://neevgupta.com/)
 - [Published IOS Application](https://apps.apple.com/us/app/endure/id6670519456)
 
 ---
