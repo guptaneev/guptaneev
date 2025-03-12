@@ -40,8 +40,6 @@ Built a full-stack tool for cross-city housing comparison using Angular and Java
 
 ---
 
-## What I’m Looking For
-
 I’m open to collaborating on **open-source projects**, exploring **machine learning**, and creating impactful tools in **full-stack development** or **mobile app development**. If you're interested in working together, feel free to reach out!
 
 ---
