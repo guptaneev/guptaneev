@@ -12,7 +12,7 @@ Engineered a neural network and computational graph from scratch, implementing b
 
 ---
 
-### [Mood-Based Playlist Generator (In Progress)](https://github.com/guptaneev/mood-based_playlist_generator)  
+### [Mood-Based Playlist Generator](https://github.com/guptaneev/mood-based_playlist_generator)  
 *IB Computer Science HL Class Project.*  
 Designed a GUI-based playlist generator powered by mood analysis algorithms. Built an intuitive front-end using customtkinter and JSON for storage and detailed technical documentation (UML diagrams, wireframes).  
 **Tech:** Python | customtkinter | JSON | GUI Development  
