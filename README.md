@@ -1,12 +1,8 @@
 # Hey there! I'm Neev Gupta, a high school senior in ATX.
 
-**Aspiring Software Developer**
-
-Welcome to my GitHub! I’m passionate about building innovative software, tackling challenges, and sharing impactful projects. Below, you’ll find a curated selection of my work. 
-
 ---
 
-## Featured Projects
+## Featured
 
 ### [Neural Network Visualization](https://github.com/guptaneev/karpathy_micrograd_from_scratch)  
 *Inspired by Andrej Karpathy's Micrograd.*  
@@ -36,15 +32,15 @@ Built a full-stack tool for cross-city housing comparison using Angular and Java
 
 - **Languages:** Python, Java, HTML, CSS, JavaScript  
 - **Libraries & Frameworks:** Angular, NumPy, customtkinter, Matplotlib  
-- **Expertise:** Neural Networks, Full-Stack Development, GUI Development, API Integration, Data Visualization, iOS Development
+- **Expertise:** Neural Networks, Full-Stack Development, GUI Development, API Integration, Data Visualization
 
 ---
 
-I’m open to collaborating on **open-source projects**, exploring **machine learning**, and creating impactful tools in **full-stack development** or **mobile app development**. If you're interested in working together, feel free to reach out!
+I’m open to collaborating on open-source projects, exploring machine learning, and creating impactful tools in full-stack development or mobile app development. If you're interested in working together, feel free to reach out!
 
 ---
 
-## My Links!
+## Links!
 
 - [LinkedIn](https://www.linkedin.com/in/neevgupta/)  
 - [Personal Website](https://neevgupta.com/)
