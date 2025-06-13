@@ -13,48 +13,81 @@ export default function Portfolio() {
       <HeroSection />
 
       {/* Main Content */}
-      <div className="w-full pt-12">
+      <div className="w-full max-w-7xl mx-auto pt-12 px-4 sm:px-6 lg:px-8">
         {/* Skills Section */}
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mb-12 px-4 sm:px-6 lg:px-8"
+          className="mb-16"
         >
-          <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+          <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
             Skills
           </h2>
           <Card className="bg-gray-800/50 border-gray-700">
-            <CardContent className="pt-6">
-              <div className="flex flex-wrap gap-2 justify-center">
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  Angular
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  Git
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  HTML/CSS
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  Java
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  JavaScript
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  Python
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  React
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  ChromaDB
-                </Badge>
-                <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30">
-                  Gemini API
-                </Badge>
+            <CardContent className="p-8">
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-300 mb-3">
+                    Frontend:
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      React
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Angular
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      TypeScript
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      JavaScript
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      HTML/CSS
+                    </Badge>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-300 mb-3">
+                    Backend:
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Python
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Node.js
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Java
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      REST APIs
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Firebase
+                    </Badge>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-gray-300 mb-3">
+                    Data & Tools:
+                  </h3>
+                  <div className="flex flex-wrap gap-3">
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      PostgreSQL
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      SQL
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Git
+                    </Badge>
+                  </div>
+                </div>
               </div>
             </CardContent>
           </Card>
@@ -66,9 +99,9 @@ export default function Portfolio() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="mb-12 px-4 sm:px-6 lg:px-8"
+          className="mb-16"
         >
-          <h2 className="text-2xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+          <h2 className="text-3xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
             Experience
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -78,8 +111,10 @@ export default function Portfolio() {
               content={
                 <ul className="list-disc list-inside text-gray-300">
                   <li>
-                    Engineered {"Adoore"}, a housing comparison tool, utilizing
-                    Angular, Java, REST API, HTML/CSS, and the BDX Web API
+                    Developed Adoore, a full-stack housing analytics platform
+                    consuming NewHomeSource REST APIs, by architecting dynamic
+                    Angular components and building data-processing logic with
+                    Java + Jakarta EE
                   </li>
                   <li>
                     Spearheaded creation of Zonda&apos;s 2025 Internship Program
@@ -89,17 +124,19 @@ export default function Portfolio() {
               className="bg-gray-800/50 border-gray-700"
             />
             <InfoCard
-              title="Student Researcher"
-              description="The University of Texas at Dallas | June 2023 - August 2023"
+              title="Software Engineering Intern"
+              description="H-E-B | June 2025 - Present"
               content={
                 <ul className="list-disc list-inside text-gray-300">
                   <li>
-                    Conducted in-depth analysis of sales and customer retention
-                    datasets using SQL
+                    Engineered modular React components integrated with
+                    Salesforce Apex to enhance UI performance and reusability
+                    across H-E-B&apos;s 120K-user PartnerNet intranet
                   </li>
                   <li>
-                    Developed interactive dashboards with Tableau to visualize
-                    key insights and trends
+                    Designed and launched a centralized patch notes interface
+                    using TypeScript and internal tools, streamlining QA and
+                    engineering workflows
                   </li>
                 </ul>
               }
