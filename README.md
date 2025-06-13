@@ -11,7 +11,7 @@ Created a Generative AI-powered personal fitness coach in a Kaggle notebook usin
 
 ### [Mood-Based Playlist Generator](https://github.com/guptaneev/mood-based_playlist_generator)
 
-_IB Computer Science HL Class Project._  
+_IB Computer Science HL Project._  
 Designed a GUI-based playlist generator powered by mood analysis algorithms. Built an intuitive front-end using customtkinter and JSON for storage and detailed technical documentation (UML diagrams, wireframes).  
 **Tech:** Python | customtkinter | JSON | GUI Development  
 **🔗** [GitHub Repo](https://github.com/guptaneev/mood-based_playlist_generator)
