@@ -27,18 +27,6 @@ Built a full-stack tool for cross-city housing comparison using Angular and Java
 
 ---
 
-## Skills
-
-- **Languages:** Python, Java, HTML, CSS, JavaScript
-- **Libraries & Frameworks:** Angular, NumPy, customtkinter, Matplotlib
-- **Tools:** Git, React
-
----
-
-If you're interested in working together, feel free to reach out!
-
----
-
 ## Links
 
 - [LinkedIn](https://www.linkedin.com/in/neevgupta/)
