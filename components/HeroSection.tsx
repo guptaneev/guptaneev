@@ -62,11 +62,11 @@ export function HeroSection() {
           </div>
           <div className="flex items-center">
             <GraduationCap className="w-5 h-5 mr-2" />
-            <span>Incoming CS @ UT Austin</span>
+            <span>CS @ UT Austin</span>
           </div>
           <div className="flex items-center">
             <Code2 className="w-5 h-5 mr-2" />
-            <span>Software Developer</span>
+            <span>Full-Stack AI Developer</span>
           </div>
         </motion.div>
 

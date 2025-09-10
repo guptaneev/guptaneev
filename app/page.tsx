@@ -40,13 +40,19 @@ export default function Portfolio() {
                       Angular
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      JavaScript (ES6+)
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
                       TypeScript
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
-                      JavaScript
+                      HTML/CSS
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
-                      HTML/CSS
+                      Swift
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Xcode
                     </Badge>
                   </div>
                 </div>
@@ -62,13 +68,19 @@ export default function Portfolio() {
                       Node.js
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
-                      Java
+                      Java (Jakarta EE)
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
                       REST APIs
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
                       Firebase
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Salesforce Apex
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Gradle
                     </Badge>
                   </div>
                 </div>
@@ -84,7 +96,13 @@ export default function Portfolio() {
                       SQL
                     </Badge>
                     <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      Tableau
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
                       Git
+                    </Badge>
+                    <Badge className="bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 px-4 py-1.5 text-base">
+                      NPM
                     </Badge>
                   </div>
                 </div>
@@ -166,18 +184,9 @@ export default function Portfolio() {
               content={
                 <ul className="list-disc list-inside text-gray-300">
                   <li>Bachelor of Science in Computer Science</li>
-                </ul>
-              }
-              className="bg-gray-800/50 border-gray-700"
-            />
-            <InfoCard
-              title="Westwood High School"
-              description="August 2021 - May 2025"
-              content={
-                <ul className="list-disc list-inside text-gray-300">
                   <li>
-                    Relevant Coursework: CS III, IB CS HL, AP CSP, AP CSA, AP
-                    Calculus AB, AP Calculus BC
+                    Relevant Coursework: Data Structures & Algorithms, Discrete
+                    Math
                   </li>
                 </ul>
               }
