@@ -77,7 +77,7 @@ export function HeroSection() {
           className="flex justify-center space-x-6"
         >
           <a
-            href="mailto:neevgupta.austin@gmail.com"
+            href="mailto:neevgupta@utexas.edu"
             className="text-gray-300 hover:text-blue-400 transition-colors"
           >
             <Mail className="w-6 h-6" />
