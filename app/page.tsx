@@ -180,10 +180,9 @@ export default function Portfolio() {
           <div className="grid grid-cols-1 gap-6">
             <InfoCard
               title="The University of Texas at Austin"
-              description="August 2025 - May 2029"
+              description="Bachelor of Science in Computer Science"
               content={
                 <ul className="list-disc list-inside text-gray-300">
-                  <li>Bachelor of Science in Computer Science</li>
                   <li>
                     Relevant Coursework: Data Structures & Algorithms, Discrete
                     Math
