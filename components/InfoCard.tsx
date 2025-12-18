@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -21,6 +20,8 @@ interface InfoCardProps {
   externalLink?: string;
   externalLinkText?: string;
   className?: string;
+  smallImage?: boolean;
+  links?: { href: string; label: string; kind?: "github" | "external" }[];
 }
 
 export function InfoCard({
@@ -34,27 +35,33 @@ export function InfoCard({
   externalLink,
   externalLinkText,
   className,
+  smallImage = false,
+  links,
 }: InfoCardProps) {
   return (
     <Card
-      className={`h-full flex flex-col bg-gray-900/50 backdrop-blur-sm border-gray-800 hover:border-blue-500/30 transition-all duration-300 ${
+      className={`h-full flex flex-col bg-transparent border-0 shadow-none transition-all duration-300 ${
         className || ""
       }`}
     >
-      <CardHeader className="pb-5">
-        <CardTitle className="text-2xl font-semibold text-white tracking-tight">
+      <CardHeader className="pb-0 px-0">
+        <CardTitle className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent tracking-tight">
           {title}
         </CardTitle>
         {description && (
-          <CardDescription className="text-base text-gray-400 leading-relaxed">
+          <CardDescription className="label mb-2">
             {description}
           </CardDescription>
         )}
       </CardHeader>
 
-      <CardContent className="flex-grow flex flex-col space-y-6">
+      <CardContent className="flex-grow flex flex-col space-y-4 pt-4 px-0 pb-0">
         {imageSrc && (
-          <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl group shadow-lg">
+          <div
+            className={`relative w-full overflow-hidden rounded-xl group ${
+              smallImage ? "aspect-[2/1]" : "aspect-[16/9]"
+            }`}
+          >
             <Image
               src={imageSrc}
               alt={imageAlt || title}
@@ -64,7 +71,7 @@ export function InfoCard({
               priority={false}
               quality={90}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
         )}
         <div className="text-base text-gray-300 leading-relaxed">
@@ -74,58 +81,85 @@ export function InfoCard({
         </div>
 
         {tags && tags.length > 0 && (
-          <div className="flex flex-wrap gap-2">
-            {tags.map((tag) => (
-              <Badge
-                key={tag}
-                variant="secondary"
-                className="text-sm bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 transition-colors duration-200"
-              >
-                {tag}
-              </Badge>
-            ))}
+          <div className="pt-2">
+            <p className="text-sm text-gray-400 leading-relaxed">
+              {tags.map((tag, idx) => (
+                <span key={tag}>
+                  <span className="text-gray-300">{tag}</span>
+                  {idx < tags.length - 1 && <span className="mx-2">·</span>}
+                </span>
+              ))}
+            </p>
           </div>
         )}
 
-        {(githubLink || externalLink) && (
-          <div className="flex space-x-3 pt-3">
-            {githubLink && (
+        {links && links.length > 0 ? (
+          <div className="flex flex-wrap gap-3 pt-3">
+            {links.map((l) => (
               <Button
+                key={l.href + l.label}
                 variant="outline"
                 size="sm"
                 asChild
                 className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
               >
                 <a
-                  href={githubLink}
+                  href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors flex items-center"
+                  className="label text-blue-300 hover:text-blue-200 transition-colors flex items-center"
                 >
-                  <Github className="w-4 h-4 mr-1.5" />
-                  GitHub
+                  {l.kind === "github" ? (
+                    <Github className="w-4 h-4 mr-1.5" />
+                  ) : (
+                    <ExternalLink className="w-4 h-4 mr-1.5" />
+                  )}
+                  {l.label}
                 </a>
               </Button>
-            )}
-            {externalLink && (
-              <Button
-                variant="outline"
-                size="sm"
-                asChild
-                className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
-              >
-                <a
-                  href={externalLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-400 hover:text-blue-300 transition-colors flex items-center"
-                >
-                  <ExternalLink className="w-4 h-4 mr-1.5" />
-                  {externalLinkText || "View"}
-                </a>
-              </Button>
-            )}
+            ))}
           </div>
+        ) : (
+          (githubLink || externalLink) && (
+            <div className="flex space-x-3 pt-3">
+              {githubLink && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
+                >
+                  <a
+                    href={githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label text-blue-300 hover:text-blue-200 transition-colors flex items-center"
+                  >
+                    <Github className="w-4 h-4 mr-1.5" />
+                    GitHub
+                  </a>
+                </Button>
+              )}
+              {externalLink && (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  asChild
+                  className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
+                >
+                  <a
+                    href={externalLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="label text-blue-300 hover:text-blue-200 transition-colors flex items-center"
+                  >
+                    <ExternalLink className="w-4 h-4 mr-1.5" />
+                    {externalLinkText || "View"}
+                  </a>
+                </Button>
+              )}
+            </div>
+          )
         )}
       </CardContent>
     </Card>
