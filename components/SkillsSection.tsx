@@ -55,7 +55,7 @@ export function SkillsSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-3xl sm:text-4xl font-bold mb-12 text-white"
+        className="text-3xl sm:text-4xl font-bold mb-12 text-[#f3f6fb]"
       >
         Skills
       </motion.h2>
@@ -71,13 +71,13 @@ export function SkillsSection() {
           >
             <div className="mb-4">
               <h3 className="label">{band.title}</h3>
-              <p className="text-xs text-gray-500">{band.description}</p>
+              <p className="text-xs text-[#cfd8e3]">{band.description}</p>
             </div>
-            <p className="text-gray-300 leading-relaxed text-sm sm:text-base">
+            <p className="text-[#e8edf3] leading-relaxed text-sm sm:text-base">
               {band.skills.map((skill, skillIdx) => (
                 <span key={skill.name}>
                   {skill.bold ? (
-                    <span className="font-semibold text-gray-100">
+                    <span className="font-semibold text-[#f3f6fb]">
                       {skill.name}
                     </span>
                   ) : (

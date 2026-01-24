@@ -14,8 +14,8 @@ const experiences: ExperienceItem[] = [
     role: "AI Researcher",
     period: "December 2025 - Present",
     bullets: [
-      "Incoming Winter 2026",
-      "Tackling how trust affects AI / Human collaborative reasoning",
+      "Creating the backend and agent logic for a multi-agent murder-mystery game used to study trust in human–AI collaboration",
+      "Designing procedurally generated clues and difficulty controls to support large-scale trust experiments with AI agents and human players",
     ],
   },
   {
@@ -61,7 +61,7 @@ export function ExperienceSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-3xl sm:text-4xl font-bold mb-12 text-white"
+        className="text-3xl sm:text-4xl font-bold mb-12 text-[#f3f6fb]"
       >
         Experience
       </motion.h2>
@@ -77,23 +77,23 @@ export function ExperienceSection() {
             className="relative pl-6 sm:pl-8"
           >
             {/* Vertical line connector */}
-            <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-blue-500/50 to-transparent" />
+            <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-[#008170]/60 to-transparent" />
 
             {/* Dot on timeline */}
-            <div className="absolute left-[-7px] top-1.5 w-3 h-3 rounded-full bg-blue-400 border-2 border-gray-900" />
+            <div className="absolute left-[-7px] top-1.5 w-3 h-3 rounded-full bg-[#008170] border-2 border-[#0f0f0f]" />
 
             {/* Content */}
             <div>
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-2 mb-2">
-                <h3 className="text-xl font-bold text-white">{exp.role}</h3>
-                <span className="text-sm text-gray-400">{exp.period}</span>
+                <h3 className="text-xl font-bold text-[#f3f6fb]">{exp.role}</h3>
+                <span className="text-sm text-[#cfd8e3]">{exp.period}</span>
               </div>
               <p className="label mb-4">{exp.company}</p>
               <ul className="space-y-3">
                 {exp.bullets.map((bullet, bulletIdx) => (
                   <li
                     key={bulletIdx}
-                    className="text-gray-300 text-base leading-relaxed"
+                    className="text-[#e8edf3] text-base leading-relaxed"
                   >
                     {bullet}
                   </li>

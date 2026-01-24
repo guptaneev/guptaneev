@@ -45,7 +45,7 @@ export function InfoCard({
       }`}
     >
       <CardHeader className="pb-0 px-0">
-        <CardTitle className="text-2xl font-semibold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent tracking-tight">
+        <CardTitle className="text-2xl font-semibold text-[#f3f6fb] tracking-tight">
           {title}
         </CardTitle>
         {description && (
@@ -71,10 +71,10 @@ export function InfoCard({
               priority={false}
               quality={90}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/40 via-purple-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#005b41]/55 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </div>
         )}
-        <div className="text-base text-gray-300 leading-relaxed">
+        <div className="text-base text-[#e8edf3] leading-relaxed">
           {typeof content === "string"
             ? content.replace(/\bapi\b/gi, "API")
             : content}
@@ -82,10 +82,10 @@ export function InfoCard({
 
         {tags && tags.length > 0 && (
           <div className="pt-2">
-            <p className="text-sm text-gray-400 leading-relaxed">
+            <p className="text-sm text-[#cfd8e3] leading-relaxed">
               {tags.map((tag, idx) => (
                 <span key={tag}>
-                  <span className="text-gray-300">{tag}</span>
+                  <span className="text-[#f3f6fb]">{tag}</span>
                   {idx < tags.length - 1 && <span className="mx-2">·</span>}
                 </span>
               ))}
@@ -101,13 +101,13 @@ export function InfoCard({
                 variant="outline"
                 size="sm"
                 asChild
-                className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
+                className="text-sm bg-[#1a2230] border-[#008170] hover:bg-[#008170]/10 hover:border-[#008170] transition-all duration-200"
               >
                 <a
                   href={l.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="label text-blue-300 hover:text-blue-200 transition-colors flex items-center"
+                  className="label text-[#e8edf3] hover:text-[#7ce7d0] transition-colors flex items-center"
                 >
                   {l.kind === "github" ? (
                     <Github className="w-4 h-4 mr-1.5" />
@@ -127,13 +127,13 @@ export function InfoCard({
                   variant="outline"
                   size="sm"
                   asChild
-                  className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
+                  className="text-sm bg-[#1a2230] border-[#008170] hover:bg-[#008170]/10 hover:border-[#008170] transition-all duration-200"
                 >
                   <a
                     href={githubLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="label text-blue-300 hover:text-blue-200 transition-colors flex items-center"
+                    className="label text-[#e8edf3] hover:text-[#7ce7d0] transition-colors flex items-center"
                   >
                     <Github className="w-4 h-4 mr-1.5" />
                     GitHub
@@ -145,13 +145,13 @@ export function InfoCard({
                   variant="outline"
                   size="sm"
                   asChild
-                  className="text-sm bg-gray-800/50 border-gray-700 hover:bg-gray-700/50 hover:border-blue-500/50 transition-all duration-200"
+                  className="text-sm bg-[#1a2230] border-[#008170] hover:bg-[#008170]/10 hover:border-[#008170] transition-all duration-200"
                 >
                   <a
                     href={externalLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="label text-blue-300 hover:text-blue-200 transition-colors flex items-center"
+                    className="label text-[#e8edf3] hover:text-[#7ce7d0] transition-colors flex items-center"
                   >
                     <ExternalLink className="w-4 h-4 mr-1.5" />
                     {externalLinkText || "View"}

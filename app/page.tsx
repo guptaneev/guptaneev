@@ -11,7 +11,7 @@ import { EducationSection } from "@/components/EducationSection";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white flex flex-col">
+    <div className="min-h-screen bg-gradient-to-b from-[#0f0f0f] via-[#141a24] to-[#232d3f] text-[#e8edf3] flex flex-col">
       {/* Hero Section */}
       <HeroSection />
 
@@ -34,7 +34,7 @@ export default function Portfolio() {
       </div>
 
       {/* Footer */}
-      <footer className="mt-24 py-12 px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm border-t border-gray-800/50">
+      <footer className="mt-24 py-12 px-4 sm:px-6 lg:px-8 text-center text-[#cfd8e3] text-sm border-t border-[#005b41]/40">
         <p>© 2025 Neev Gupta. Built with Next.js, React, and TypeScript.</p>
       </footer>
     </div>

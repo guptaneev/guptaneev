@@ -35,6 +35,16 @@ Conversational personal fitness coach using advanced AI techniques: prompt engin
 
 ## Other Projects
 
+### [Redact](https://github.com/ChetanGorantla/redact)
+
+AI-powered scam detection platform that analyzes text and images using LLMs and OCR to flag phishing and fraud. Won 4th place — AkashML Hackathon.
+
+**Technologies:** `Akash API` `Akash Console` `OCR`
+
+**Links:** [GitHub Repository](https://github.com/ChetanGorantla/redact)
+
+---
+
 ### [Adoore - City Comparison Tool](https://github.com/guptaneev/adoore)
 
 Full-stack housing analytics platform for cross-city comparison.
