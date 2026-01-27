@@ -15,7 +15,7 @@ export function SignatureSection() {
                     TECHNICAL<br/>ARSENAL
                 </h2>
                 <div className="font-mono text-sm uppercase tracking-widest text-primary">
-                    [ Available for Internship Summer 2026 ]
+                    [ WHAT I UTILIZE TO BUILD ]
                 </div>
             </div>
 

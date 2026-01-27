@@ -67,7 +67,7 @@ export function HeroSection() {
         {/* Subheader: Small caps, offset */}
         <div className="absolute top-[calc(10%+clamp(4rem,12vw,12rem))] left-[10%] mt-4 sm:mt-8">
             <h2 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider relative top-[2px]">
-                AUSTIN, TX • CS @ UT AUSTIN • LONGHORN POWERLIFTING
+                AUSTIN, TX • CS @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
             </h2>
         </div>
 
