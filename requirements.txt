@@ -1,0 +1,19 @@
+# Python Dependencies for Execution Layer
+# Install with: pip install -r requirements.txt
+
+# Google APIs
+google-auth-oauthlib
+google-auth-httplib2
+google-api-python-client
+
+# Environment Variables
+python-dotenv
+
+# Common utilities
+requests
+beautifulsoup4
+lxml
+
+# Data processing
+pandas
+openpyxl

@@ -1,233 +1,205 @@
-import { motion } from "framer-motion";
-import { InfoCard } from "./InfoCard";
+"use client";
+
+import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
+import { useInteraction } from "@/contexts/InteractionContext";
+import { useRef } from "react";
+import { Spotlight } from "@/components/ui/Spotlight";
 
-// Featured projects (1–2 max)
-const featuredProjects = [
+interface CaseStudy {
+  id: string;
+  anchorId: string;
+  title: string;
+  thesis: string;
+  constraints: string[];
+  outcome: string;
+  imageSrc?: string;
+  images?: string[];
+  imageAlt: string;
+  links?: {
+    github?: string;
+    demo?: string;
+    blog?: string;
+    kaggle?: string;
+  };
+}
+
+const caseStudies: CaseStudy[] = [
   {
+    id: "pinpoint",
+    anchorId: "emergency-response",
     title: "Pinpoint",
-    description: "Concert safety platform for large live events",
-    content: (
-      <>
-        <div className="relative w-full aspect-[16/9] overflow-hidden rounded-xl group mb-4">
-          <div className="absolute inset-0 flex">
-            <div className="relative w-1/2 h-full bg-[#232d3f] overflow-hidden">
-              <Image
-                src="/pinpoint1.png"
-                alt="Pinpoint Screenshot 1"
-                fill
-                className="object-contain transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={false}
-                quality={90}
-              />
-            </div>
-            <div className="relative w-1/2 h-full bg-[#1a2230] border-l border-[#005b41]/40 overflow-hidden">
-              <Image
-                src="/pinpoint2.png"
-                alt="Pinpoint Screenshot 2"
-                fill
-                className="object-contain transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                priority={false}
-                quality={90}
-              />
-            </div>
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#008170]/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        </div>
-        <p className="text-[#e8edf3]">
-          Concert safety platform combining live crowd visibility with direct
-          communication to on-site medical teams. Powers real-time heatmaps and
-          enables attendees to notify EMS in under 2 seconds across events with
-          100,000+ attendees.
-        </p>
-      </>
-    ),
-    tags: ["TypeScript", "React", "Node.js", "Docker"],
-    githubLink: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
+    thesis:
+      "Concert safety can't wait. Alerts delivered to EMS in <2 seconds.",
+    constraints: ["Real-time latency", "Crowd density", "Network partitions"],
+    outcome: "Live heatmaps + instant alerts for 100,000+ attendees",
+    images: ["/pinpoint1.png", "/pinpoint2.png"],
+    imageAlt: "Pinpoint concert safety platform screenshots",
+    links: {
+      github: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
+    },
   },
   {
-    title: "PeCo - Generative AI in the Gym",
-    description: "Gen AI Intensive Course Capstone Project",
+    id: "d3",
+    anchorId: "constraint-solver",
+    title: "D3 AI Trust",
+    thesis:
+      "When to trust AI? A multi-agent system for studying human–AI dynamics.",
+    constraints: ["Procedural generation", "Difficulty scaling", "Validity"],
+    outcome: "Backend logic for large-scale trust experiments",
+    imageSrc: "/d3-research.jpg",
+    imageAlt: "AI trust research visualization",
+    links: {},
+  },
+  {
+    id: "peco",
+    anchorId: "peco-fitness",
+    title: "PeCo",
+    thesis:
+      "Personalized training at scale. RAG-powered AI coach using ChromaDB.",
+    constraints: ["Context retrieval", "Personalization", "Coherence"],
+    outcome: "Gen AI Intensive capstone with search grounding",
     imageSrc: "/peco.jpg",
-    imageAlt: "PeCo Project Screenshot",
-    content: (
-      <>
-        <p className="text-[#e8edf3] mb-4">
-          Conversational personal fitness coach using advanced AI techniques:
-          prompt engineering, embeddings, RAG, and search grounding. Tackles
-          barriers to gym access by delivering personalized coaching at scale.
-        </p>
-      </>
-    ),
-    tags: ["Python", "LangChain", "RAG", "ChromaDB"],
-    links: [
-      {
-        href: "https://www.youtube.com/watch?v=FMurg0jzzXQ",
-        label: "Demo",
-        kind: "external" as const,
-      },
-      {
-        href: "https://www.linkedin.com/pulse/how-can-we-use-generative-ai-gym-neev-gupta-iurnc/?trackingId=NTVZZCONS2eOJiMeSGJSww%3D%3D",
-        label: "Blogpost",
-        kind: "external" as const,
-      },
-      {
-        href: "https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone",
-        label: "Kaggle Notebook",
-        kind: "external" as const,
-      },
-    ],
+    imageAlt: "PeCo AI fitness coach interface",
+    links: {
+      demo: "https://www.youtube.com/watch?v=FMurg0jzzXQ",
+      blog: "https://www.linkedin.com/pulse/how-can-we-use-generative-ai-gym-neev-gupta-iurnc/",
+      kaggle: "https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone",
+    },
   },
 ];
 
-// Secondary projects (smaller grid, less prominence)
-const secondaryProjects = [
-  {
-    title: "Redact",
-    description: "4th place — AkashML Hackathon",
-    imageSrc: "/redact.png",
-    imageAlt: "Redact scam detection platform",
-    content: (
-      <p className="text-[#cfd8e3] text-sm">
-        AI-powered scam detection platform that analyzes text and images using
-        LLMs and OCR to flag phishing and fraud.
-      </p>
-    ),
-    tags: ["Akash API", "Akash Console", "OCR"],
-    githubLink: "https://github.com/ChetanGorantla/redact",
-  },
-  {
-    title: "Endure",
-    description: "Fitness app for new gym-goers",
-    imageSrc: "/endure.png",
-    imageAlt: "Endure App Screenshot",
-    content: (
-      <p className="text-[#cfd8e3] text-sm">
-        Fitness app with personalized workouts and progress tracking. Attracted
-        ~600 installs.
-      </p>
-    ),
-    tags: ["Swift", "SwiftUI", "iOS"],
-  },
-  {
-    title: "Adoore",
-    description: "City comparison tool for housing analytics",
-    imageSrc: "/adoore.png",
-    imageAlt: "Adoore City Comparison Tool Screenshot",
-    content: (
-      <p className="text-[#cfd8e3] text-sm">
-        Full-stack housing analytics platform for cross-city comparison.
-      </p>
-    ),
-    tags: ["Angular", "Java", "REST APIs"],
-    githubLink: "https://github.com/guptaneev/adoore",
-  },
-  {
-    title: "Mood-Based Playlist Generator",
-    description: "Mood analysis for personalized playlists",
-    imageSrc: "/csia.png",
-    imageAlt: "Mood-Based Playlist Generator Screenshot",
-    content: (
-      <p className="text-[#cfd8e3] text-sm">
-        Interactive mood analysis system for personalized playlist generation.
-      </p>
-    ),
-    tags: ["Python", "REST APIs"],
-    githubLink: "https://github.com/guptaneev/mood-based_playlist_generator",
-  },
-];
+export function CaseStudiesSection() {
+  const { activeProject, projectThemes } = useInteraction();
+  
+  // Tagline depends on hover state
+  const sectionTitle = activeProject
+    ? projectThemes[activeProject]?.tagline || "Selected Works"
+    : "Selected Works";
 
-export function FeaturedProjectsSection() {
   return (
-    <motion.section
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className="mb-24 px-4 sm:px-6 lg:px-8"
-    >
-      <motion.h2
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className="text-3xl sm:text-4xl font-bold mb-12 text-[#f3f6fb]"
-      >
-        Featured Work
-      </motion.h2>
+    <section className="relative py-32 px-4 sm:px-6 lg:px-8">
+      {/* Sticky Header - Crucial for Visibility */}
+      <div className="sticky top-8 z-40 mb-24 mix-blend-difference text-white pointer-events-none">
+        <motion.h2
+          key={sectionTitle} // Trigger animation on change
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -20, opacity: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="font-sans font-black text-5xl sm:text-7xl tracking-tighter"
+        >
+          {sectionTitle}
+        </motion.h2>
+      </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-        {featuredProjects.map((project, index) => (
-          <motion.div
-            key={project.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            viewport={{ once: true }}
-            className="w-full group"
-          >
-            <InfoCard
-              {...project}
-              className="bg-transparent border border-[#005b41]/50 hover:border-[#008170]/80 rounded-xl p-6 h-full transition-all duration-300"
-            />
-          </motion.div>
+      <div className="max-w-6xl mx-auto space-y-48">
+        {caseStudies.map((study, index) => (
+          <CaseStudyCard
+            key={study.id}
+            study={study}
+            isReversed={index % 2 === 1}
+          />
         ))}
       </div>
-    </motion.section>
+    </section>
   );
 }
 
-export function SecondaryProjectsSection() {
-  const [expanded, setExpanded] = useState(false);
+function CaseStudyCard({
+  study,
+  isReversed,
+}: {
+  study: CaseStudy;
+  isReversed: boolean;
+}) {
+  const { setActiveProject } = useInteraction();
+  const ref = useRef(null);
+  
+  // Parallax Effect
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]); // Image moves opposite to scroll
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   return (
-    <div className="mb-16 px-4 sm:px-6 lg:px-8">
-      <button
-        onClick={() => setExpanded(!expanded)}
-        className="w-full flex items-center justify-between p-5 rounded-lg bg-[#1a2230] hover:bg-[#232d3f] border border-[#005b41]/60 hover:border-[#008170] transition-all duration-200"
-        aria-expanded={expanded}
-      >
-        <span className="text-xl font-bold text-[#f3f6fb]">Other Projects</span>
-        <ChevronDown
-          className={`w-6 h-6 text-[#008170] transition-transform duration-300 ${
-            expanded ? "rotate-180" : ""
-          }`}
-        />
-      </button>
+    <motion.article
+      ref={ref}
+      style={{ opacity }}
+      onMouseEnter={() => setActiveProject(study.id)}
+      onMouseLeave={() => setActiveProject(null)}
+      id={study.anchorId}
+      className={`relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 ${
+        isReversed ? "lg:grid-flow-dense" : ""
+      }`}
+    >
+      {/* Visual with Spotlight & Parallax */}
+      <div className={`${isReversed ? "lg:col-start-2" : ""} relative`}>
+        <Spotlight className="rounded-xl bg-muted/20">
+            <motion.div style={{ y }} className="relative z-10 p-4">
+            {study.images ? (
+                <div className="grid grid-cols-2 gap-4"> 
+                {study.images.map((img, idx) => (
+                    <div key={idx} className="relative aspect-[4/3] overflow-hidden bg-muted group rounded-sm">
+                    <Image
+                        src={img}
+                        alt={`${study.imageAlt} ${idx + 1}`}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                    </div>
+                ))}
+                </div>
+            ) : study.imageSrc ? (
+                 <div className="relative aspect-[16/9] overflow-hidden bg-muted group rounded-sm">
+                    <Image
+                        src={study.imageSrc}
+                        alt={study.imageAlt}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                    />
+                </div>
+            ) : null}
+            </motion.div>
+        </Spotlight>
+      </div>
 
-      <motion.div
-        initial={false}
-        animate={{
-          opacity: expanded ? 1 : 0,
-          height: expanded ? "auto" : 0,
-        }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="overflow-hidden"
-      >
-        <div className="mt-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {secondaryProjects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="w-full group"
-              >
-                <InfoCard
-                  {...project}
-                  className="bg-transparent border border-[#005b41]/50 hover:border-[#008170]/80 rounded-xl p-6 h-full transition-all duration-300"
-                  smallImage={true}
-                />
-              </motion.div>
-            ))}
-          </div>
+      {/* Content */}
+      <div className={`${isReversed ? "lg:col-start-1 lg:row-start-1" : ""} space-y-8`}>
+        <div>
+          <h3 className="font-sans font-black text-4xl sm:text-5xl text-foreground mb-4">
+            {study.title}
+          </h3>
+          <p className="font-serif text-xl sm:text-2xl leading-relaxed text-foreground/80">
+            {study.thesis}
+          </p>
         </div>
-      </motion.div>
-    </div>
+
+        <div className="flex flex-wrap gap-2">
+          {study.constraints.map((c) => (
+            <span key={c} className="px-3 py-1 border border-foreground/20 text-sm font-mono text-foreground/60 uppercase tracking-widest">
+              {c}
+            </span>
+          ))}
+        </div>
+
+        <div className="flex gap-4 pt-4">
+          {study.links?.github && (
+            <a href={study.links.github} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+              <Github className="w-6 h-6" />
+            </a>
+          )}
+          {(study.links?.demo || study.links?.blog) && (
+             <a href={study.links.demo || study.links.blog} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
+              <ExternalLink className="w-6 h-6" />
+            </a>
+          )}
+        </div>
+      </div>
+    </motion.article>
   );
 }
