@@ -19,15 +19,6 @@ export function HeroSection() {
 
   return (
     <section className="min-h-screen relative bg-[#F5F5F5] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
-      {/* Diagonal Line - Static 23deg */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-0"
-        style={{
-          background: "linear-gradient(23deg, transparent 49.9%, #FF5722 50%, transparent 50.1%)",
-          opacity: 0.9
-        }}
-      />
-
       {/* ASCII Borders */}
       <div className="absolute top-4 left-4 text-[#999999] font-mono leading-none select-none z-10 hidden sm:block">
         ╔═══╗<br/>║   ║<br/>╚═══╝
@@ -42,31 +33,60 @@ export function HeroSection() {
         ╔═══╗<br/>║   ║<br/>╚═══╝
       </div>
 
-      {/* Live Metrics - Top Right - Moved left by 60px relative to original right-8/16 */}
-      {/* Original was right-8 (32px). Adding 60px -> right-[92px]. sm:right-16 (64px) + 60px -> sm:right-[124px] */}
+      {/* Live Metrics - Top Right */}
       <div className="absolute top-8 right-[92px] sm:right-[124px] text-right font-mono text-xs sm:text-sm z-20">
         <div className="flex flex-col gap-1">
           <span>Systems live: <span className="text-[#FF5722]">3</span></span>
-          {/* Users served line removed */}
         </div>
       </div>
 
       {/* Main Content Area */}
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col p-6 sm:p-12">
         
-        {/* Name: Massive, Clamp, Cutoff */}
-        <div className="absolute top-[10%] left-[8%] sm:left-[10%] mix-blend-multiply w-[110%] overflow-hidden pointer-events-none">
+        {/* Name Area with Weaving Line */}
+        <div 
+          className="absolute top-[8%] left-[8%] sm:left-[10%] w-[110%] overflow-visible pointer-events-none flex items-center"
+          style={{ height: "clamp(4rem, 12vw, 12rem)" }}
+        >
+          {/* Horizontal Strikethrough - SVG now inside same stacking context */}
+          <svg className="absolute inset-x-0 w-full h-full pointer-events-none overflow-visible" style={{ zIndex: 20 }}>
+            <line 
+              x1="-10%" y1="50%" 
+              x2="110%" y2="50%" 
+              stroke="#FF5722" 
+              strokeWidth="3"
+            />
+          </svg>
+
           <h1 
-            className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A] whitespace-nowrap"
+            className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A] whitespace-nowrap flex relative"
             style={{ fontSize: "clamp(4rem, 12vw, 12rem)" }}
           >
-            Neev Gupta
+            {"Neev Gupta".split("").map((char, i) => {
+              // Custom weaving pattern: [behind, front, front, behind, front, behind, front, behind, behind, front]
+              // Creates irregular rhythm: N(behind), e(front), e(front), v(behind), space(front), G(behind), u(front), p(behind), t(behind), a(front)
+              const weavePattern = [10, 30, 30, 10, 30, 10, 30, 10, 10, 30];
+              const zIndex = weavePattern[i] || 20;
+              
+              return (
+                <span 
+                  key={i} 
+                  className="relative block mix-blend-multiply"
+                  style={{ 
+                    marginRight: char === " " ? "0.25em" : "-0.02em",
+                    zIndex: zIndex
+                  }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              );
+            })}
           </h1>
         </div>
 
         {/* Subheader: Small caps, offset */}
-        <div className="absolute top-[calc(10%+clamp(4rem,12vw,12rem))] left-[10%] mt-4 sm:mt-8">
-            <h2 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider relative top-[2px]">
+        <div className="absolute top-[calc(8%+clamp(4rem,12vw,12rem))] left-[10%] mt-4 sm:mt-8">
+            <h2 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider relative top-[2px] z-30">
                 AUSTIN, TX • CS @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
             </h2>
         </div>
