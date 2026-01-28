@@ -17,13 +17,13 @@ body {
 @layer base {
   :root {
     /* Neutral Palette - Brutalist Minimalism */
-    --background: 0 0% 98%; /* Off-white #FAFAFA */
+    --background: 0 0% 94%; /* Darker off-white #F0F0F0 */
     --foreground: 0 0% 8%; /* Near-black #141414 */
     
-    --card: 0 0% 96%; /* Light gray surface #F5F5F5 */
+    --card: 0 0% 91%; /* Darker gray surface #E8E8E8 */
     --card-foreground: 0 0% 8%;
     
-    --popover: 0 0% 96%;
+    --popover: 0 0% 91%;
     --popover-foreground: 0 0% 8%;
     
     /* Hot Orange Accent - The One Vivid Color */

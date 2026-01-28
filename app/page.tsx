@@ -5,7 +5,6 @@ import { AboutSection } from "@/components/AboutSection";
 import { CaseStudiesSection } from "@/components/ProjectsSection";
 import { SignatureSection } from "@/components/SignatureSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
-import { MetricsSection } from "@/components/MetricsSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollProgress } from "@/components/ScrollProgress";
 import { InteractionProvider, useInteraction } from "@/contexts/InteractionContext";
@@ -33,19 +32,22 @@ function PortfolioContent() {
       <AboutSection />
 
       {/* Case Studies */}
-      <CaseStudiesSection />
+      <div id="selected-work">
+        <CaseStudiesSection />
+      </div>
 
       {/* More Projects - Brutalist Link */}
       <MoreProjectsSection />
 
       {/* Signature Section - Technical Arsenal */}
-      <SignatureSection />
+      <div id="technical-arsenal">
+        <SignatureSection />
+      </div>
 
       {/* Experience */}
-      <ExperienceSection />
-
-      {/* System Metrics */}
-      <MetricsSection />
+      <div id="work-history">
+        <ExperienceSection />
+      </div>
 
       {/* Contact */}
       <ContactSection />

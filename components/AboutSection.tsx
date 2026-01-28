@@ -7,7 +7,7 @@ export function AboutSection() {
   // The transition effect in Hero handles the reveal.
   
   return (
-    <section className="min-h-screen bg-[#F5F5F5] text-[#0A0A0A] py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section className="min-h-screen bg-[#E8E8E8] text-[#0A0A0A] py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       <div className="max-w-7xl mx-auto h-full flex flex-col justify-center">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative">

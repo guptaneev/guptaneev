@@ -18,7 +18,7 @@ export function HeroSection() {
   }
 
   return (
-    <section className="min-h-screen relative bg-[#F5F5F5] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
+    <section className="min-h-screen relative bg-[#E8E8E8] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
       {/* ASCII Borders */}
       <div className="absolute top-4 left-4 text-[#999999] font-mono leading-none select-none z-10 hidden sm:block">
         ╔═══╗<br/>║   ║<br/>╚═══╝
@@ -87,7 +87,7 @@ export function HeroSection() {
         {/* Subheader: Small caps, offset */}
         <div className="absolute top-[calc(8%+clamp(4rem,12vw,12rem))] left-[10%] mt-4 sm:mt-8">
             <h2 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider relative top-[2px] z-30">
-                AUSTIN, TX • CS @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
+                AUSTIN, TX • COMPUTER SCIENCE @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
             </h2>
         </div>
 
@@ -108,9 +108,12 @@ export function HeroSection() {
 
         {/* Navigation: Command Links */}
         <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 sm:gap-8 z-30">
-            <NavigationLink href="#emergency-response" text="./emergency_response" />
-            <NavigationLink href="#constraint-solver" text="./constraint_solver" className="-ml-[3px]" />
-            <NavigationLink href="#peco-fitness" text="./peco_fitness" />
+            <NavigationLink href="#selected-work" text="./selected_work" />
+            <NavigationLink href="#technical-arsenal" text="./technical_arsenal" />
+            <div className="flex items-center">
+              <NavigationLink href="#work-history" text="./work_history" />
+              <span className="font-mono text-sm sm:text-base text-[#0A0A0A] ml-1 animate-blink">_</span>
+            </div>
         </div>
       </div>
     </section>
@@ -156,15 +159,13 @@ function NavigationLink({ href, text, className = "" }: { href: string; text: st
     <a 
       href={href}
       onClick={handleClick}
-      className={`group relative inline-block font-mono text-sm sm:text-base text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-75 ${className}`}
+      className={`group relative inline-block font-mono text-sm sm:text-base text-[#0A0A0A] transition-colors duration-200 ${className}`}
     >
-      <span className="relative z-10 group-hover:block hidden absolute inset-0 bg-[#0A0A0A] text-[#F5F5F5] px-1 -mx-1 animate-pulse">
-        {text}
+      <span className="relative">
+        <span className="opacity-100 group-hover:opacity-100 transition-opacity duration-200">
+          [<span className="opacity-0 group-hover:opacity-100 text-[#FF5722] transition-opacity duration-200">&gt; </span>{text}]
+        </span>
       </span>
-      <span className="relative z-0 group-hover:opacity-0 transition-opacity">
-        {text}
-      </span>
-      <span className="absolute left-0 bottom-0 w-full h-[1px] bg-[#FF5722] scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-150" />
     </a>
   );
 }

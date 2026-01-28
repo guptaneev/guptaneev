@@ -17,7 +17,7 @@ const config: Config = {
       },
       colors: {
         brutal: {
-          bg: "#F5F5F5",
+          bg: "#E8E8E8",
           text: "#0A0A0A",
           accent: "#FF5722",
           border: "#CCCCCC",
@@ -70,10 +70,15 @@ const config: Config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        blink: {
+          "0%, 50%": { opacity: "1" },
+          "51%, 100%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        blink: "blink 1s step-end infinite",
       },
       spacing: {
         '18': '4.5rem',
