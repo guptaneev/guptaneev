@@ -4,121 +4,154 @@ import { useEffect, useState } from "react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
+  const [showScrollPulse, setShowScrollPulse] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    let idleTimer: NodeJS.Timeout;
+    let animationTimer: NodeJS.Timeout;
+    let isAnimating = false;
+
+    const resetIdleTimer = () => {
+      clearTimeout(idleTimer);
+      clearTimeout(animationTimer);
+      
+      setShowScrollPulse(false);
+      isAnimating = false;
+
+      idleTimer = setTimeout(() => {
+        startAnimationSequence();
+      }, 4000);
+    };
+
+    const startAnimationSequence = () => {
+      if (isAnimating) return;
+      isAnimating = true;
+
+      const runSequence = () => {
+        // SCROLL CYCLE: Start immediately
+        setShowScrollPulse(true);
+        setTimeout(() => setShowScrollPulse(false), 3500);
+
+        // Loop continuously at 5s
+        animationTimer = setTimeout(() => {
+          if (isAnimating) {
+            runSequence();
+          }
+        }, 5000);
+      };
+
+      runSequence();
+    };
+
+    const handleActivity = () => {
+      resetIdleTimer();
+    };
+
+    window.addEventListener('click', handleActivity);
+    window.addEventListener('scroll', handleActivity);
+
+    resetIdleTimer();
+
+    return () => {
+      clearTimeout(idleTimer);
+      clearTimeout(animationTimer);
+      window.removeEventListener('click', handleActivity);
+      window.removeEventListener('scroll', handleActivity);
+    };
   }, []);
 
   if (!mounted) {
     return (
-      <section className="min-h-screen relative bg-[#F5F5F5] overflow-hidden flex flex-col justify-between">
-         {/* Server-side fallback / Loading state */}
+      <section className="min-h-screen relative bg-[#E8E8E8] overflow-hidden flex flex-col justify-between">
+         {/* Server-side fallback */}
       </section>
     );
   }
 
   return (
-    <section className="min-h-screen relative bg-[#E8E8E8] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
-      {/* ASCII Borders */}
-      <div className="absolute top-4 left-4 text-[#999999] font-mono leading-none select-none z-10 hidden sm:block">
-        ╔═══╗<br/>║   ║<br/>╚═══╝
-      </div>
-      <div className="absolute top-4 right-4 text-[#999999] font-mono leading-none select-none z-10 hidden sm:block">
-        ╔═══╗<br/>║   ║<br/>╚═══╝
-      </div>
-      <div className="absolute bottom-4 left-4 text-[#999999] font-mono leading-none select-none z-10 hidden sm:block">
-        ╔═══╗<br/>║   ║<br/>╚═══╝
-      </div>
-      <div className="absolute bottom-4 right-4 text-[#999999] font-mono leading-none select-none z-10 hidden sm:block">
-        ╔═══╗<br/>║   ║<br/>╚═══╝
-      </div>
-
-      {/* Live Metrics - Top Right */}
-      <div className="absolute top-8 right-[92px] sm:right-[124px] text-right font-mono text-xs sm:text-sm z-20">
-        <div className="flex flex-col gap-1">
-          <span>Systems live: <span className="text-[#FF5722]">3</span></span>
-        </div>
-      </div>
-
-      {/* Main Content Area */}
+    <section className="h-screen relative bg-[#E8E8E8] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
+      
       <div className="relative z-10 w-full h-full min-h-screen flex flex-col p-6 sm:p-12">
         
-        {/* Name Area with Weaving Line */}
-        <div 
-          className="absolute top-[8%] left-[8%] sm:left-[10%] w-[110%] overflow-visible pointer-events-none flex items-center"
-          style={{ height: "clamp(4rem, 12vw, 12rem)" }}
-        >
-          {/* Horizontal Strikethrough - SVG now inside same stacking context */}
-          <svg className="absolute inset-x-0 w-full h-full pointer-events-none overflow-visible" style={{ zIndex: 20 }}>
-            <line 
-              x1="-10%" y1="50%" 
-              x2="110%" y2="50%" 
-              stroke="#FF5722" 
-              strokeWidth="3"
-            />
-          </svg>
+        {/* Name and Tagline Container */}
+        <div className="absolute top-[15%] left-[15%] right-[15%] flex items-start justify-between gap-8">
+          
+          {/* Name: Two lines, left-aligned */}
+          <div className="flex-shrink-0">
+            <h1 className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A]" style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}>
+              Neev<br/>Gupta
+            </h1>
+          </div>
 
-          <h1 
-            className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A] whitespace-nowrap flex relative"
-            style={{ fontSize: "clamp(4rem, 12vw, 12rem)" }}
-          >
-            {"Neev Gupta".split("").map((char, i) => {
-              // Custom weaving pattern: [behind, front, front, behind, front, behind, front, behind, behind, front]
-              // Creates irregular rhythm: N(behind), e(front), e(front), v(behind), space(front), G(behind), u(front), p(behind), t(behind), a(front)
-              const weavePattern = [10, 30, 30, 10, 30, 10, 30, 10, 10, 30];
-              const zIndex = weavePattern[i] || 20;
-              
-              return (
-                <span 
-                  key={i} 
-                  className="relative block mix-blend-multiply"
-                  style={{ 
-                    marginRight: char === " " ? "0.25em" : "-0.02em",
-                    zIndex: zIndex
-                  }}
-                >
-                  {char === " " ? "\u00A0" : char}
-                </span>
-              );
-            })}
-          </h1>
-        </div>
-
-        {/* Subheader: Small caps, offset */}
-        <div className="absolute top-[calc(8%+clamp(4rem,12vw,12rem))] left-[10%] mt-4 sm:mt-8">
-            <h2 className="font-sans text-xs sm:text-sm font-bold uppercase tracking-wider relative top-[2px] z-30">
-                AUSTIN, TX • COMPUTER SCIENCE @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
-            </h2>
-        </div>
-
-        {/* Tagline: Centered Vertically */}
-        <div className="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-center items-center px-4 pointer-events-none">
-            <p className="font-sans text-xl sm:text-3xl md:text-5xl font-medium text-center max-w-4xl leading-tight">
-                I build AI systems that scale under <span className="text-[#FF5722]">pressure</span>
+          {/* Tagline: Right side */}
+          <div className="flex-shrink-0 pt-4">
+            <p className="font-sans text-xl sm:text-2xl md:text-3xl font-medium text-right max-w-md leading-tight">
+              I build AI systems that scale under <span className="text-[#FF5722]">pressure</span>
             </p>
+          </div>
         </div>
 
-        {/* Tech Stack: Bottom Left, Rotated */}
-        {/* Moved up by 40px. Original bottom-12 (3rem/48px). New: bottom-[88px] */}
-        <div className="absolute bottom-[88px] left-8 sm:left-12 origin-bottom-left -rotate-[1.2deg]">
-            <p className="text-sm font-sans font-bold opacity-80 text-[#0A0A0A]">
-                React • Node • PyTorch • MongoDB
-            </p>
+        {/* Subheader: Below name, larger */}
+        <div className="absolute top-[calc(15%+clamp(8rem,20vw,16rem)+2rem)] left-[15%]">
+          <h2 className="font-sans text-base sm:text-lg md:text-xl font-bold uppercase tracking-wider">
+            AUSTIN, TX • COMPUTER SCIENCE @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
+          </h2>
         </div>
 
         {/* Navigation: Command Links */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 sm:gap-8 z-30">
+        <div className="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 sm:gap-8 z-30">
+          <div className="relative flex items-center justify-center">
+            {showScrollPulse && (
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+                <div className="w-[12px] h-[12px] rounded-full bg-[#FF5722] animate-pulseStatic" style={{ willChange: 'transform, opacity', animationDelay: '0ms' }} />
+              </div>
+            )}
             <NavigationLink href="#selected-work" text="./selected_work" />
+          </div>
+          
+          <div className="relative flex items-center justify-center">
+            {showScrollPulse && (
+              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+                <div className="w-[12px] h-[12px] rounded-full bg-[#FF5722] animate-pulseStatic" style={{ willChange: 'transform, opacity', animationDelay: '200ms' }} />
+              </div>
+            )}
             <NavigationLink href="#technical-arsenal" text="./technical_arsenal" />
-            <div className="flex items-center">
+          </div>
+          
+          <div className="flex items-center">
+            <div className="relative flex items-center justify-center">
+              {showScrollPulse && (
+                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
+                  <div className="w-[12px] h-[12px] rounded-full bg-[#FF5722] animate-pulseStatic" style={{ willChange: 'transform, opacity', animationDelay: '400ms' }} />
+                </div>
+              )}
               <NavigationLink href="#work-history" text="./work_history" />
-              <span className="font-mono text-sm sm:text-base text-[#0A0A0A] ml-1 animate-blink">_</span>
             </div>
+            <span className="font-mono text-sm sm:text-base text-[#0A0A0A] ml-1 animate-blink">_</span>
+          </div>
+        </div>
+
+        {/* Scroll Indicator with Pulse */}
+        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
+          <div className="relative flex items-center justify-center w-[40px] h-[40px]">
+            {showScrollPulse && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-[18px] h-[18px] rounded-full bg-[#FF5722] animate-scrollPulse" style={{ willChange: 'transform, opacity' }} />
+              </div>
+            )}
+            <div className="text-[#FF5722] text-2xl font-bold z-10">
+              ↓
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+
+
 
 function NavigationLink({ href, text, className = "" }: { href: string; text: string; className?: string }) {
   
@@ -130,7 +163,6 @@ function NavigationLink({ href, text, className = "" }: { href: string; text: st
 
     const targetPosition = element.getBoundingClientRect().top + window.scrollY;
     const startPosition = window.scrollY;
-    // const distance = targetPosition - startPosition; // This distance can be negative
     const distance = targetPosition - startPosition;
     const duration = 1200;
     let startTime: number | null = null;
@@ -140,7 +172,6 @@ function NavigationLink({ href, text, className = "" }: { href: string; text: st
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
       
-      // Ease-in-out function
       const ease = progress < 0.5 
         ? 2 * progress * progress 
         : -1 + (4 - 2 * progress) * progress;
