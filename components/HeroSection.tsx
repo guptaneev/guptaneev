@@ -4,160 +4,10 @@ import { useEffect, useState } from "react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  const [showScrollPulse, setShowScrollPulse] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-
-    let idleTimer: NodeJS.Timeout;
-    let animationTimer: NodeJS.Timeout;
-    let isAnimating = false;
-
-    const resetIdleTimer = () => {
-      clearTimeout(idleTimer);
-      clearTimeout(animationTimer);
-      
-      setShowScrollPulse(false);
-      isAnimating = false;
-
-      idleTimer = setTimeout(() => {
-        startAnimationSequence();
-      }, 4000);
-    };
-
-    const startAnimationSequence = () => {
-      if (isAnimating) return;
-      isAnimating = true;
-
-      const runSequence = () => {
-        // SCROLL CYCLE: Start immediately
-        setShowScrollPulse(true);
-        setTimeout(() => setShowScrollPulse(false), 3500);
-
-        // Loop continuously at 5s
-        animationTimer = setTimeout(() => {
-          if (isAnimating) {
-            runSequence();
-          }
-        }, 5000);
-      };
-
-      runSequence();
-    };
-
-    const handleActivity = () => {
-      resetIdleTimer();
-    };
-
-    window.addEventListener('click', handleActivity);
-    window.addEventListener('scroll', handleActivity);
-
-    resetIdleTimer();
-
-    return () => {
-      clearTimeout(idleTimer);
-      clearTimeout(animationTimer);
-      window.removeEventListener('click', handleActivity);
-      window.removeEventListener('scroll', handleActivity);
-    };
-  }, []);
-
-  if (!mounted) {
-    return (
-      <section className="min-h-screen relative bg-[#E8E8E8] overflow-hidden flex flex-col justify-between">
-         {/* Server-side fallback */}
-      </section>
-    );
-  }
-
-  return (
-    <section className="h-screen relative bg-[#E8E8E8] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
-      
-      <div className="relative z-10 w-full h-full min-h-screen flex flex-col p-6 sm:p-12">
-        
-        {/* Name and Tagline Container */}
-        <div className="absolute top-[15%] left-[15%] right-[15%] flex items-start justify-between gap-8">
-          
-          {/* Name: Two lines, left-aligned */}
-          <div className="flex-shrink-0">
-            <h1 className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A]" style={{ fontSize: "clamp(4rem, 10vw, 8rem)" }}>
-              Neev<br/>Gupta
-            </h1>
-          </div>
-
-          {/* Tagline: Right side */}
-          <div className="flex-shrink-0 pt-4">
-            <p className="font-sans text-xl sm:text-2xl md:text-3xl font-medium text-right max-w-md leading-tight">
-              I build AI systems that scale under <span className="text-[#FF5722]">pressure</span>
-            </p>
-          </div>
-        </div>
-
-        {/* Subheader: Below name, larger */}
-        <div className="absolute top-[calc(15%+clamp(8rem,20vw,16rem)+2rem)] left-[15%]">
-          <h2 className="font-sans text-base sm:text-lg md:text-xl font-bold uppercase tracking-wider">
-            AUSTIN, TX • COMPUTER SCIENCE @ UT AUSTIN • LONGHORN POWERLIFTING • <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LINKEDIN</a> • <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="inline-block border border-[#0A0A0A] px-1 mx-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GITHUB</a>
-          </h2>
-        </div>
-
-        {/* Navigation: Command Links */}
-        <div className="absolute bottom-32 left-1/2 -translate-x-1/2 flex flex-col items-center gap-6 sm:gap-8 z-30">
-          <div className="relative flex items-center justify-center">
-            {showScrollPulse && (
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                <div className="w-[12px] h-[12px] rounded-full bg-[#FF5722] animate-pulseStatic" style={{ willChange: 'transform, opacity', animationDelay: '0ms' }} />
-              </div>
-            )}
-            <NavigationLink href="#selected-work" text="./selected_work" />
-          </div>
-          
-          <div className="relative flex items-center justify-center">
-            {showScrollPulse && (
-              <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                <div className="w-[12px] h-[12px] rounded-full bg-[#FF5722] animate-pulseStatic" style={{ willChange: 'transform, opacity', animationDelay: '200ms' }} />
-              </div>
-            )}
-            <NavigationLink href="#technical-arsenal" text="./technical_arsenal" />
-          </div>
-          
-          <div className="flex items-center">
-            <div className="relative flex items-center justify-center">
-              {showScrollPulse && (
-                <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-none">
-                  <div className="w-[12px] h-[12px] rounded-full bg-[#FF5722] animate-pulseStatic" style={{ willChange: 'transform, opacity', animationDelay: '400ms' }} />
-                </div>
-              )}
-              <NavigationLink href="#work-history" text="./work_history" />
-            </div>
-            <span className="font-mono text-sm sm:text-base text-[#0A0A0A] ml-1 animate-blink">_</span>
-          </div>
-        </div>
-
-        {/* Scroll Indicator with Pulse */}
-        <div className="absolute bottom-12 left-1/2 -translate-x-1/2">
-          <div className="relative flex items-center justify-center w-[40px] h-[40px]">
-            {showScrollPulse && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-[18px] h-[18px] rounded-full bg-[#FF5722] animate-scrollPulse" style={{ willChange: 'transform, opacity' }} />
-              </div>
-            )}
-            <div className="text-[#FF5722] text-2xl font-bold z-10">
-              ↓
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-
-
-function NavigationLink({ href, text, className = "" }: { href: string; text: string; className?: string }) {
-  
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  // Smooth scroll handler
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    const targetId = href.replace("#", "");
     const element = document.getElementById(targetId);
     if (!element) return;
 
@@ -186,17 +36,79 @@ function NavigationLink({ href, text, className = "" }: { href: string; text: st
     requestAnimationFrame(animation);
   };
 
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <section className="min-h-screen relative bg-[#E8E8E8] overflow-hidden flex flex-col justify-between">
+         {/* Server-side fallback */}
+      </section>
+    );
+  }
+
   return (
-    <a 
-      href={href}
-      onClick={handleClick}
-      className={`group relative inline-block font-mono text-sm sm:text-base text-[#0A0A0A] transition-colors duration-200 ${className}`}
-    >
-      <span className="relative">
-        <span className="opacity-100 group-hover:opacity-100 transition-opacity duration-200">
-          [<span className="opacity-0 group-hover:opacity-100 text-[#FF5722] transition-opacity duration-200">&gt; </span>{text}]
-        </span>
-      </span>
-    </a>
+    <section className="h-screen relative bg-[#E8E8E8] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
+      
+      <div className="relative z-10 w-full h-full min-h-screen flex flex-col p-6 sm:p-12">
+        
+        {/* Name and Tagline Container */}
+        <div className="absolute top-[15%] left-[15%] right-[8%] flex items-start justify-between gap-8">
+          
+          {/* Name: Two lines, left-aligned - 35% larger */}
+          <div className="flex-shrink-0 relative">
+            {/* Decorative orange vertical lines - extend full height of page */}
+            <div className="absolute -left-8 -top-[15vh] w-[3px] h-[200vh] bg-[#FF5722]"></div>
+            <div className="absolute -left-12 -top-[15vh] w-[3px] h-[200vh] bg-[#FF5722]"></div>
+            
+            <h1 className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A]" style={{ fontSize: "clamp(5.4rem, 13.5vw, 10.8rem)" }}>
+              Neev<br/>Gupta
+            </h1>
+          </div>
+
+          {/* Tagline: Far right edge */}
+          <div className="flex-shrink-0 pt-4 flex flex-col items-end gap-8">
+            <p className="font-sans text-xl sm:text-2xl md:text-3xl font-medium text-right max-w-md leading-tight">
+              I build AI systems that scale under <span className="text-[#FF5722]">pressure</span>
+            </p>
+            
+            {/* Quick Access Links */}
+            <div className="flex flex-col items-end gap-3 -mr-8 mt-4">
+              <span className="font-mono text-xs uppercase tracking-widest text-[#0A0A0A] opacity-60">Quick Access</span>
+              <div className="flex flex-col items-end gap-3 border-2 border-[#0A0A0A] bg-[#F5F5F5] px-6 py-4">
+                <a href="#selected-work" onClick={(e) => handleSmoothScroll(e, "selected-work")} className="font-mono text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
+                  Selected Work
+                </a>
+                <a href="#technical-arsenal" onClick={(e) => handleSmoothScroll(e, "technical-arsenal")} className="font-mono text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
+                  Technical Arsenal
+                </a>
+                <a href="#work-history" onClick={(e) => handleSmoothScroll(e, "work-history")} className="font-mono text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
+                  Work History
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Subheader: Below name - simplified and lighter */}
+        <div className="absolute top-[calc(15%+clamp(10.8rem,27vw,21.6rem)+2rem)] left-[15%] flex flex-col gap-3">
+          <h2 className="font-sans text-sm sm:text-base md:text-lg font-medium uppercase tracking-wider">
+            AUSTIN, TX • CS @ UT AUSTIN
+          </h2>
+          {/* Social links below - less dominant */}
+          <div className="flex gap-3">
+            <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LinkedIn</a>
+            <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GitHub</a>
+          </div>
+        </div>
+
+
+      </div>
+    </section>
   );
 }
+
