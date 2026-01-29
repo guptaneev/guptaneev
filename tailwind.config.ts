@@ -95,6 +95,10 @@ const config: Config = {
           "40%": { transform: "scale(1)", opacity: "1" },
           "100%": { transform: "scale(3.5)", opacity: "0" },
         },
+        shineSwipe: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -103,6 +107,7 @@ const config: Config = {
         clickPulse: "clickPulse 3.2s ease-out forwards",
         scrollPulse: "scrollPulse 3.5s ease-out forwards",
         pulseStatic: "pulseStatic 3.5s ease-out forwards",
+        shineSwipe: "shineSwipe 1.5s ease-in-out infinite",
       },
       spacing: {
         '18': '4.5rem',

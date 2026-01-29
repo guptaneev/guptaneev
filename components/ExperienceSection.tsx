@@ -46,13 +46,30 @@ const experiences: Experience[] = [
 
 export function ExperienceSection() {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isAnyHovered, setIsAnyHovered] = useState(false);
+  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 20%", "end 50%"],
   });
 
+  const handleHoverStart = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+    setIsAnyHovered(true);
+  };
+
+  const handleHoverEnd = () => {
+    // Wait 3s before allowing animation to restart
+    timeoutRef.current = setTimeout(() => {
+      setIsAnyHovered(false);
+    }, 3000);
+  };
+
   return (
-    <section className="py-32 px-4 sm:px-6 lg:px-8 bg-background" ref={containerRef}>
+    <section className="experience-section py-32 px-4 sm:px-6 lg:px-8 bg-background" ref={containerRef}>
       <div className="max-w-6xl mx-auto">
         {/* Brutalist Header */}
         <div className="mb-8 sm:mb-12 lg:mb-16 ml-0 sm:ml-8 lg:ml-[104px]">
@@ -71,7 +88,13 @@ export function ExperienceSection() {
           {/* Experience Items with responsive spacing */}
           <div className="space-y-16 sm:space-y-24 lg:space-y-[225px]">
             {experiences.map((exp, index) => (
-              <ExperienceItem key={index} experience={exp} />
+              <ExperienceItem 
+                key={index} 
+                experience={exp} 
+                isAnyHovered={isAnyHovered}
+                onHoverStart={handleHoverStart}
+                onHoverEnd={handleHoverEnd}
+              />
             ))}
           </div>
         </div>
@@ -80,14 +103,30 @@ export function ExperienceSection() {
   );
 }
 
-function ExperienceItem({ experience }: { experience: Experience }) {
+function ExperienceItem({ 
+  experience, 
+  isAnyHovered,
+  onHoverStart,
+  onHoverEnd 
+}: { 
+  experience: Experience;
+  isAnyHovered: boolean;
+  onHoverStart: () => void;
+  onHoverEnd: () => void;
+}) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       className="group relative grid grid-cols-1 lg:grid-cols-2 gap-8"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={() => {
+        setIsHovered(true);
+        onHoverStart();
+      }}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        onHoverEnd();
+      }}
     >
       {/* Left Column - Always Visible */}
       <div className="relative pl-16">
@@ -101,7 +140,7 @@ function ExperienceItem({ experience }: { experience: Experience }) {
         {/* Company, Date, Role */}
         <div className="border-b border-border pb-8 group-hover:border-[#FF5722] transition-colors duration-300">
           <div className="mb-4">
-            <h3 className="font-sans font-bold text-2xl sm:text-3xl text-foreground group-hover:text-[#FF5722] transition-colors">
+            <h3 className={`font-sans font-bold text-2xl sm:text-3xl transition-colors inline-block ${!isAnyHovered ? 'shine-text' : 'text-foreground'} ${isHovered ? 'text-[#FF5722]' : ''}`}>
               {experience.company}
             </h3>
             <div className="font-mono text-xs text-foreground/50 mt-1 uppercase tracking-wider">
@@ -117,7 +156,7 @@ function ExperienceItem({ experience }: { experience: Experience }) {
 
       {/* Right Column - Always visible on mobile via CSS, animated on desktop */}
       <div
-        className="relative opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:translate-x-0 lg:group-hover:translate-x-0 transition-all duration-400 lg:-translate-x-5"
+        className="relative pl-16 lg:pl-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:translate-x-0 lg:group-hover:translate-x-0 transition-all duration-400 lg:-translate-x-5"
       >
         {/* Description */}
         <div className="font-serif text-lg sm:text-xl leading-relaxed text-foreground/80 mb-4">

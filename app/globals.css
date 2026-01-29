@@ -29,4 +29,19 @@
   .animate-clickPulse {
     animation: clickPulse 3.2s ease-out forwards !important;
   }
+
+  /* Shiny text animation for experience items */
+  @keyframes shineText {
+    0% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+
+  .shine-text {
+    background: linear-gradient(90deg, currentColor 0%, currentColor 25%, #FF5722 40%, #FF5722 60%, currentColor 75%, currentColor 100%);
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shineText 2s ease-in-out infinite;
+  }
 }
