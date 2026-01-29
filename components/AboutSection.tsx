@@ -7,18 +7,18 @@ export function AboutSection() {
     <section className="min-h-screen bg-[#E8E8E8] text-[#0A0A0A] py-20 px-4 sm:px-6 lg:px-8 relative overflow-visible">
       <div className="max-w-7xl mx-auto h-full flex flex-col justify-start">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
           
           {/* Header - Brutalist Code Style - Fully visible */}
-          <div className="lg:col-span-12 mb-4">
+          <div className="lg:col-span-12 mb-4 ml-0 sm:ml-8 lg:ml-[104px]">
              <h2 className="font-mono text-sm sm:text-base font-bold text-[#0A0A0A] tracking-widest uppercase">
                {"// ABOUT"}
              </h2>
           </div>
 
           {/* Visual - Portrait */}
-          <div className="lg:col-span-3 relative group lg:-ml-24 xl:-ml-32">
-            <div className="relative w-full aspect-[3/4] overflow-hidden grayscale contrast-125">
+          <div className="lg:col-span-3 relative group ml-0 lg:-ml-24 xl:-ml-32">
+            <div className="relative w-full aspect-[3/4] overflow-hidden">
                <Image
                   src="/pfp.jpg" 
                   alt="Portrait of Neev Gupta"
@@ -27,6 +27,9 @@ export function AboutSection() {
                   sizes="(max-width: 768px) 100vw, 25vw"
                />
             </div>
+            {/* Orange corner borders - outside overflow container */}
+            <div className="absolute -top-1 -right-1 w-8 h-8 border-t-2 border-r-2 border-[#FF5722]" />
+            <div className="absolute -bottom-1 -left-1 w-8 h-8 border-b-2 border-l-2 border-[#FF5722]" />
           </div>
 
           {/* Text Content - Full content visible on scroll */}

@@ -53,13 +53,6 @@ export function ContactSection() {
           </a>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="mt-24 pt-12 border-t border-border text-center">
-        <p className="font-serif text-sm text-muted-foreground">
-          © 2026 Neev Gupta. Built with Next.js, React, and TypeScript.
-        </p>
-      </footer>
     </motion.section>
   );
 }

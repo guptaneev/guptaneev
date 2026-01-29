@@ -80,21 +80,21 @@ export function CaseStudiesSection() {
 
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8">
-      {/* Sticky Header - Crucial for Visibility */}
-      <div className="sticky top-8 z-40 mb-24 pointer-events-none">
+      {/* Sticky Header - Responsive sizing */}
+      <div className="sticky top-4 sm:top-8 z-40 mb-8 sm:mb-16 lg:mb-24 pointer-events-none">
         <motion.h2
           key={sectionTitle} // Trigger animation on change
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
-          transition={{ duration: 0.3, ease: "easeOut" }}
-          className="font-sans font-black text-5xl sm:text-7xl tracking-tighter text-white mix-blend-difference bg-[#FF5722]/80 px-6 py-3 inline-block"
+          transition={{ duration: 0.5, ease: "easeOut" }}
+          className="font-sans font-black text-3xl sm:text-5xl lg:text-7xl tracking-tighter text-white mix-blend-difference bg-[#FF5722]/80 px-4 sm:px-6 py-2 sm:py-3 inline-block"
         >
           {sectionTitle}
         </motion.h2>
       </div>
 
-      <div className="max-w-6xl mx-auto space-y-48">
+      <div className="max-w-6xl mx-auto space-y-24 sm:space-y-32 lg:space-y-48">
         {caseStudies.map((study, index) => (
           <CaseStudyCard
             key={study.id}
@@ -133,7 +133,7 @@ function CaseStudyCard({
       onMouseEnter={() => setActiveProject(study.id)}
       onMouseLeave={() => setActiveProject(null)}
       id={study.anchorId}
-      className={`relative grid grid-cols-1 lg:grid-cols-2 gap-16 items-center z-10 ${
+      className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center z-10 ${
         isReversed ? "lg:grid-flow-dense" : ""
       }`}
     >
