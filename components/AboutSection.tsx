@@ -17,21 +17,21 @@ export function AboutSection() {
           </div>
 
           {/* Visual - Portrait */}
-          <div className="lg:col-span-5 relative group lg:-ml-24 xl:-ml-32">
+          <div className="lg:col-span-3 relative group lg:-ml-24 xl:-ml-32">
             <div className="relative w-full aspect-[3/4] overflow-hidden grayscale contrast-125">
                <Image
                   src="/pfp.jpg" 
                   alt="Portrait of Neev Gupta"
                   fill
                   className="object-cover object-top"
-                  sizes="(max-width: 768px) 100vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 25vw"
                />
             </div>
           </div>
 
           {/* Text Content - Full content visible on scroll */}
-          <div className="lg:col-span-7 space-y-4 z-10 lg:pl-12">
-            <div className="font-sans text-xl sm:text-2xl leading-relaxed font-medium text-[#0A0A0A]">
+          <div className="lg:col-span-9 space-y-4 z-10 lg:pl-12">
+            <div className="font-sans text-lg sm:text-xl leading-relaxed font-medium text-[#0A0A0A]">
               <p className="mb-4">
                 I&apos;m a Computer Science student (Class of 2029) at UT Austin designing high-reliability systems. 
                 My engineering work focuses creating <span className="text-[#FF5722]">failure</span> resilience—whether handling network partitions for 100k+ users at Pinpoint and verifying AI trust at D3 Lab.

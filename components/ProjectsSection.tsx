@@ -81,14 +81,14 @@ export function CaseStudiesSection() {
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8">
       {/* Sticky Header - Crucial for Visibility */}
-      <div className="sticky top-8 z-40 mb-24 mix-blend-difference text-white pointer-events-none">
+      <div className="sticky top-8 z-40 mb-24 pointer-events-none">
         <motion.h2
           key={sectionTitle} // Trigger animation on change
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -20, opacity: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="font-sans font-black text-5xl sm:text-7xl tracking-tighter"
+          className="font-sans font-black text-5xl sm:text-7xl tracking-tighter text-white mix-blend-difference bg-[#FF5722]/80 px-6 py-3 inline-block"
         >
           {sectionTitle}
         </motion.h2>
@@ -139,7 +139,7 @@ function CaseStudyCard({
     >
       {/* Visual with Spotlight & Parallax */}
       <div className={`${isReversed ? "lg:col-start-2" : ""} relative`}>
-        <Spotlight className="rounded-xl bg-muted/20">
+        <Spotlight className="rounded-xl">
             <motion.div style={{ y }} className="relative z-10 p-4">
             {study.images ? (
                 <div className="grid grid-cols-2 gap-4"> 
@@ -149,7 +149,7 @@ function CaseStudyCard({
                         src={img}
                         alt={`${study.imageAlt} ${idx + 1}`}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover transition-transform duration-700"
                     />
                     </div>
                 ))}
@@ -160,7 +160,7 @@ function CaseStudyCard({
                         src={study.imageSrc}
                         alt={study.imageAlt}
                         fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
+                        className="object-cover transition-transform duration-700"
                     />
                 </div>
             ) : null}

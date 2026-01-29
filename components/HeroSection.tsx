@@ -49,18 +49,18 @@ export function HeroSection() {
   }
 
   return (
-    <section className="h-screen relative bg-[#E8E8E8] text-[#0A0A0A] overflow-hidden font-sans selection:bg-[#FF5722] selection:text-white">
+    <section className="h-[70vh] relative bg-[#E8E8E8] text-[#0A0A0A] font-sans selection:bg-[#FF5722] selection:text-white">
       
-      <div className="relative z-10 w-full h-full min-h-screen flex flex-col p-6 sm:p-12">
+      <div className="relative z-10 w-full h-full flex flex-col p-6 sm:p-12">
         
         {/* Name and Tagline Container */}
         <div className="absolute top-[15%] left-[15%] right-[8%] flex items-start justify-between gap-8">
           
           {/* Name: Two lines, left-aligned - 35% larger */}
           <div className="flex-shrink-0 relative">
-            {/* Decorative orange vertical lines - extend full height of page */}
-            <div className="absolute -left-8 -top-[15vh] w-[3px] h-[200vh] bg-[#FF5722]"></div>
-            <div className="absolute -left-12 -top-[15vh] w-[3px] h-[200vh] bg-[#FF5722]"></div>
+            {/* Decorative orange vertical lines - extend to picture */}
+            <div className="absolute -left-8 -top-[15vh] w-[3px] h-[93vh] bg-[#FF5722]"></div>
+            <div className="absolute -left-12 -top-[15vh] w-[3px] h-[93vh] bg-[#FF5722]"></div>
             
             <h1 className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A]" style={{ fontSize: "clamp(5.4rem, 13.5vw, 10.8rem)" }}>
               Neev<br/>Gupta

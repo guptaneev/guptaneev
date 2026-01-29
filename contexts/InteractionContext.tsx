@@ -28,11 +28,11 @@ export function InteractionProvider({ children }: { children: ReactNode }) {
       tagline: "Concert safety at scale",
     },
     d3: {
-      bg: "hsl(0, 0%, 88%)", // Darker neutral
+      bg: "hsl(0, 0%, 95%)", // Light neutral to match others
       tagline: "Trust in human–AI collaboration",
     },
     peco: {
-      bg: "hsl(0, 0%, 100%)", // Lighter neutral
+      bg: "hsl(0, 0%, 95%)", // Light neutral to match others
       tagline: "Personalized training at scale",
     },
   };
