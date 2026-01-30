@@ -7,7 +7,7 @@ export function AboutSection() {
     <section className="min-h-screen bg-[#E8E8E8] text-[#0A0A0A] py-20 px-4 sm:px-6 lg:px-8 relative overflow-visible">
       <div className="max-w-7xl mx-auto h-full flex flex-col justify-start">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start relative">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-start lg:items-center relative">
           
           {/* Header - Brutalist Code Style - Fully visible */}
           <div className="lg:col-span-12 mb-4 ml-0 sm:ml-8 lg:ml-[104px]">
@@ -17,7 +17,7 @@ export function AboutSection() {
           </div>
 
           {/* Visual - Portrait */}
-          <div className="lg:col-span-3 relative group ml-0 lg:-ml-24 xl:-ml-32">
+          <div className="lg:col-span-3 relative group ml-0 lg:-ml-16 xl:-ml-24">
             <div className="relative w-full aspect-[3/4] overflow-hidden">
                <Image
                   src="/pfp.jpg" 
@@ -33,14 +33,28 @@ export function AboutSection() {
           </div>
 
           {/* Text Content - Full content visible on scroll */}
-          <div className="lg:col-span-9 space-y-4 z-10 lg:pl-12">
+          <div className="lg:col-span-9 space-y-6 z-10 lg:pl-12">
             <div className="font-sans text-lg sm:text-xl leading-relaxed font-medium text-[#0A0A0A]">
-              <p className="mb-4">
-                I&apos;m a Computer Science student (Class of 2029) at UT Austin designing high-reliability systems. 
-                My engineering work focuses creating <span className="text-[#FF5722]">failure</span> resilience—whether handling network partitions for 100k+ users at Pinpoint and verifying AI trust at D3 Lab.
+              <p className="mb-6">
+                Hey! I'm a computer science student at UT Austin. 🤘
+              </p>
+              <p className="mb-6">
+                I work primarily with full-stack applications and operate with AI/ML systems.
+              </p>
+              <p className="mb-6">
+                Outside of code, I'm a national-level powerlifter on Longhorn Powerlifting (check out my Instagram @nevlifts)
+              </p>
+              <p className="mb-6">
+                I've completed multiple software engineering internships working with production-level code.
+              </p>
+              <p className="mb-6">
+                A lot of my work centers on areas where reliability matters more than polish: health, fitness, and emergency response.
+              </p>
+              <p className="mb-3">
+                <span className="text-[#FF5722]">Currently</span>: SWE @ Convergent, AI Research @ D3 Lab (UT Austin)
               </p>
               <p>
-                Outside of code, I&apos;m a competitive powerlifter with a 1,200lb total. I bring the same discipline of consistent execution under load to every system I build.
+                <span className="text-[#FF5722]">Previously</span>: SWE Intern @ H-E-B, Zonda
               </p>
             </div>
           </div>

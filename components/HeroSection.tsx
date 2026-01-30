@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
+  const [lineHeight, setLineHeight] = useState("150vh");
+  const [nameOffset, setNameOffset] = useState(0);
 
   // Smooth scroll handler
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -38,6 +40,25 @@ export function HeroSection() {
 
   useEffect(() => {
     setMounted(true);
+    
+    // Calculate the height from page top to AboutSection image and name offset
+    const calculateLineHeight = () => {
+      const nameElement = document.querySelector('.font-playfair');
+      const aboutImage = document.querySelector('[alt="Portrait of Neev Gupta"]');
+      
+      if (nameElement && aboutImage) {
+        const nameTop = nameElement.getBoundingClientRect().top + window.scrollY;
+        const imageTop = aboutImage.getBoundingClientRect().top + window.scrollY;
+        setNameOffset(nameTop);
+        setLineHeight(`${imageTop}px`);
+      }
+    };
+
+    // Wait for images to load before calculating
+    setTimeout(calculateLineHeight, 100);
+    window.addEventListener('resize', calculateLineHeight);
+    
+    return () => window.removeEventListener('resize', calculateLineHeight);
   }, []);
 
   if (!mounted) {
@@ -58,9 +79,15 @@ export function HeroSection() {
           
           {/* Name: Two lines, left-aligned */}
           <div className="flex-shrink-0 relative pl-4 sm:pl-8 lg:pl-0">
-            {/* Decorative orange vertical lines - hidden on mobile */}
-            <div className="hidden lg:block absolute -left-8 -top-[15vh] w-[3px] h-[96vh] bg-[#FF5722]"></div>
-            <div className="hidden lg:block absolute -left-12 -top-[15vh] w-[3px] h-[96vh] bg-[#FF5722]"></div>
+            {/* Decorative orange vertical lines - hidden on mobile, extend from page top to image */}
+            <div 
+              className="hidden lg:block absolute -left-8 w-[3px] bg-[#FF5722]"
+              style={{ top: `-${nameOffset}px`, height: lineHeight }}
+            ></div>
+            <div 
+              className="hidden lg:block absolute -left-12 w-[3px] bg-[#FF5722]"
+              style={{ top: `-${nameOffset}px`, height: lineHeight }}
+            ></div>
             
             <h1 className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A]" style={{ fontSize: "clamp(3.5rem, 13.5vw, 10.8rem)" }}>
               Neev<br/>Gupta
@@ -69,8 +96,8 @@ export function HeroSection() {
 
           {/* Tagline: Right on desktop, below on mobile */}
           <div className="flex-shrink-0 pt-0 lg:pt-4 flex flex-col items-start lg:items-end gap-6 lg:gap-8 pl-4 sm:pl-8 lg:pl-0">
-            <p className="font-sans text-lg sm:text-xl md:text-2xl lg:text-3xl font-medium text-left lg:text-right max-w-md leading-tight">
-              I build AI systems that scale under <span className="text-[#FF5722]">pressure</span>
+            <p className="font-mono text-base sm:text-lg lg:text-xl text-[#0A0A0A] tracking-wide leading-relaxed max-w-md lg:max-w-lg text-right">
+              I build <span className="text-[#FF5722]">full-stack</span> applications and research <span className="text-[#FF5722]">ML systems</span>.
             </p>
             
             {/* Quick Access Links */}
