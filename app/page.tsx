@@ -39,7 +39,7 @@ function PortfolioContent() {
       {/* More Projects - Brutalist Link */}
       <MoreProjectsSection />
 
-      {/* Signature Section - Technical Arsenal */}
+      {/* Signature Section - Technical Skills */}
       <div id="technical-arsenal">
         <SignatureSection />
       </div>

@@ -12,7 +12,7 @@ export function SignatureSection() {
             
             <div className="space-y-8">
                 <h2 className="font-sans font-black text-5xl sm:text-6xl tracking-tighter leading-none">
-                    TECHNICAL<br/>ARSENAL
+                    TECHNICAL<br/>SKILLS
                 </h2>
                 <div className="font-mono text-sm uppercase tracking-widest text-[#FF5722]">
                     [ WHAT I UTILIZE TO BUILD ]
@@ -23,19 +23,19 @@ export function SignatureSection() {
                 <div>
                     <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Languages</h3>
                     <p className="font-serif text-xl leading-relaxed text-background/90">
-                        TypeScript, Python, Java, C++, SQL (Postgres), HTML/CSS
+                        JavaScript, TypeScript, Python, Java, SQL, HTML/CSS
                     </p>
                 </div>
                 <div>
-                     <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Frameworks & Tools</h3>
+                     <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Frameworks & Platforms</h3>
                     <p className="font-serif text-xl leading-relaxed text-background/90">
-                        Next.js, React, Tailwind, Docker, LangChain, AWS (Lambda, DynamoDB), Git
+                        React, React Native, Angular, Node.js, Expo, Firebase, MongoDB, REST APIs, Salesforce Apex
                     </p>
                 </div>
                  <div>
-                     <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Domains</h3>
+                     <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Tools & Practices</h3>
                     <p className="font-serif text-xl leading-relaxed text-background/90">
-                        Distributed Systems, Human–AI Interaction, Full Stack Web, Event Safety
+                        Git, Docker, CI/CD, Agile, Scrum, NPM, Gradle, Tableau
                     </p>
                 </div>
             </div>

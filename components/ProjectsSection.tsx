@@ -32,7 +32,7 @@ const caseStudies: CaseStudy[] = [
     title: "Pinpoint",
     thesis:
       "Concert safety can't wait. Alerts delivered to EMS in <2 seconds.",
-    constraints: ["Real-time latency", "Crowd density", "Network partitions"],
+    constraints: ["React Native", "Expo", "Typescript", "MongoDB"],
     outcome: "Live heatmaps + instant alerts for 100,000+ attendees",
     images: ["/pinpoint1.png", "/pinpoint2.png"],
     imageAlt: "Pinpoint concert safety platform screenshots",
@@ -43,12 +43,12 @@ const caseStudies: CaseStudy[] = [
   {
     id: "d3",
     anchorId: "constraint-solver",
-    title: "D3 AI Trust",
+    title: "D3 Lab: Trust Prism",
     thesis:
       "When to trust AI? A multi-agent system for studying human–AI dynamics.",
-    constraints: ["Procedural generation", "Difficulty scaling", "Validity"],
+    constraints: ["Python", "Procedural generation", "Difficulty scaling"],
     outcome: "Backend logic for large-scale trust experiments",
-    imageSrc: "/d3-research.jpg",
+    imageSrc: "/trustprism.png",
     imageAlt: "AI trust research visualization",
     links: {},
   },
@@ -58,7 +58,7 @@ const caseStudies: CaseStudy[] = [
     title: "PeCo",
     thesis:
       "Personalized training at scale. RAG-powered AI coach using ChromaDB.",
-    constraints: ["Context retrieval", "Personalization", "Coherence"],
+    constraints: ["Python", "LangChain", "ChromaDB", "RAG"],
     outcome: "Gen AI Intensive capstone with search grounding",
     imageSrc: "/peco.jpg",
     imageAlt: "PeCo AI fitness coach interface",
@@ -144,12 +144,12 @@ function CaseStudyCard({
             {study.images ? (
                 <div className="grid grid-cols-2 gap-4"> 
                 {study.images.map((img, idx) => (
-                    <div key={idx} className="relative aspect-[4/3] overflow-hidden bg-muted group rounded-sm">
+                    <div key={idx} className="relative aspect-[9/16] overflow-hidden bg-muted group rounded-sm">
                     <Image
                         src={img}
                         alt={`${study.imageAlt} ${idx + 1}`}
                         fill
-                        className="object-cover transition-transform duration-700"
+                        className="object-contain transition-transform duration-700"
                     />
                     </div>
                 ))}

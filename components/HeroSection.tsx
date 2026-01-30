@@ -110,7 +110,7 @@ export function HeroSection() {
                 </a>
                 <a href="#technical-arsenal" onClick={(e) => handleSmoothScroll(e, "technical-arsenal")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
-                  Technical Arsenal
+                  Technical Skills
                 </a>
                 <a href="#work-history" onClick={(e) => handleSmoothScroll(e, "work-history")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
