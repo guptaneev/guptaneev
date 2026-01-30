@@ -25,22 +25,23 @@ const experiences: Experience[] = [
     company: "Texas Convergent",
     role: "Software Engineer",
     outcome: "Shipped Pinpoint: <2s latency alerts for 100k+ concert attendees.",
-    techStack: "React, Node.js, WebSockets, MongoDB",
+    techStack: "React, Expo, Node.js, MongoDB",
     link: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
   },
   {
     date: "Summer 2025",
     company: "H-E-B Digital",
-    role: "SWE Intern",
+    role: "Software Engineering Intern",
     outcome: "Built intranet modules serving 120k daily active employees.",
-    techStack: "React, TypeScript, Azure",
+    techStack: "React, TypeScript, Salesforce Apex, ",
   },
   {
     date: "Summer 2024",
     company: "Zonda",
-    role: "SWE Intern",
+    role: "Software Engineering Intern",
     outcome: "Architected housing analytics engine for 50+ metro regions.",
-    techStack: "Python, PostgreSQL, AWS",
+    techStack: "Angular, Java, REST APIs",
+    link: "https://github.com/guptaneev/adoore"
   },
 ];
 

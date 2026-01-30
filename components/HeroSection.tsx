@@ -106,7 +106,7 @@ export function HeroSection() {
               <div className="flex flex-col items-start lg:items-end gap-3 border-2 border-[#0A0A0A] bg-[#F5F5F5] px-4 sm:px-6 py-3 sm:py-4">
                 <a href="#selected-work" onClick={(e) => handleSmoothScroll(e, "selected-work")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
-                  Selected Work
+                  Selected Projects
                 </a>
                 <a href="#technical-arsenal" onClick={(e) => handleSmoothScroll(e, "technical-arsenal")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
@@ -128,6 +128,7 @@ export function HeroSection() {
           </h2>
           {/* Social links below - less dominant */}
           <div className="flex gap-3">
+            <a href="mailto:neevgupta@utexas.edu" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">Email</a>
             <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LinkedIn</a>
             <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GitHub</a>
           </div>

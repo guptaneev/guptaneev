@@ -2,10 +2,15 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink, Github } from "lucide-react";
+import { ExternalLink, Github, LucideIcon, Youtube, Linkedin, FileCode } from "lucide-react";
 import { useInteraction } from "@/contexts/InteractionContext";
 import { useRef } from "react";
 import { Spotlight } from "@/components/ui/Spotlight";
+
+interface LinkItem {
+  url: string;
+  icon?: LucideIcon;
+}
 
 interface CaseStudy {
   id: string;
@@ -18,10 +23,11 @@ interface CaseStudy {
   images?: string[];
   imageAlt: string;
   links?: {
-    github?: string;
-    demo?: string;
-    blog?: string;
-    kaggle?: string;
+    github?: string | LinkItem;
+    demo?: string | LinkItem;
+    blog?: string | LinkItem;
+    kaggle?: string | LinkItem;
+    [key: string]: string | LinkItem | undefined;
   };
 }
 
@@ -63,9 +69,9 @@ const caseStudies: CaseStudy[] = [
     imageSrc: "/peco.jpg",
     imageAlt: "PeCo AI fitness coach interface",
     links: {
-      demo: "https://www.youtube.com/watch?v=FMurg0jzzXQ",
-      blog: "https://www.linkedin.com/pulse/how-can-we-use-generative-ai-gym-neev-gupta-iurnc/",
-      kaggle: "https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone",
+      demo: { url: "https://www.youtube.com/watch?v=FMurg0jzzXQ", icon: Youtube },
+      blog: { url: "https://www.linkedin.com/pulse/how-can-we-use-generative-ai-gym-neev-gupta-iurnc/", icon: Linkedin },
+      kaggle: { url: "https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone", icon: FileCode },
     },
   },
 ];
@@ -75,8 +81,8 @@ export function CaseStudiesSection() {
   
   // Tagline depends on hover state
   const sectionTitle = activeProject
-    ? projectThemes[activeProject]?.tagline || "Selected Works"
-    : "Selected Works";
+    ? projectThemes[activeProject]?.tagline || "Selected Projects"
+    : "Selected Projects";
 
   return (
     <section className="relative py-32 px-4 sm:px-6 lg:px-8">
@@ -188,16 +194,26 @@ function CaseStudyCard({
         </div>
 
         <div className="flex gap-4 pt-4">
-          {study.links?.github && (
-            <a href={study.links.github} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-              <Github className="w-6 h-6" />
-            </a>
-          )}
-          {(study.links?.demo || study.links?.blog) && (
-             <a href={study.links.demo || study.links.blog} target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
-              <ExternalLink className="w-6 h-6" />
-            </a>
-          )}
+          {study.links && Object.entries(study.links).map(([key, value]) => {
+            if (!value) return null;
+            
+            const url = typeof value === 'string' ? value : value.url;
+            const IconComponent = typeof value === 'string' 
+              ? (key === 'github' ? Github : ExternalLink)
+              : (value.icon || ExternalLink);
+            
+            return (
+              <a 
+                key={key}
+                href={url} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                <IconComponent className="w-6 h-6" />
+              </a>
+            );
+          })}
         </div>
       </div>
     </motion.article>

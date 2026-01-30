@@ -36,16 +36,16 @@ export function AboutSection() {
           <div className="lg:col-span-9 space-y-6 z-10 lg:pl-12">
             <div className="font-sans text-lg sm:text-xl leading-relaxed font-medium text-[#0A0A0A]">
               <p className="mb-6">
-                Hey! I'm a computer science student at UT Austin. 🤘
+                Hey! I&apos;m a computer science student at UT Austin. 🤘
               </p>
               <p className="mb-6">
                 I work primarily with full-stack applications and operate with AI/ML systems.
               </p>
               <p className="mb-6">
-                Outside of code, I'm a national-level powerlifter on Longhorn Powerlifting (check out my Instagram @nevlifts)
+                Outside of code, I&apos;m a national-level powerlifter on Longhorn Powerlifting (check out my Instagram @nevlifts)
               </p>
               <p className="mb-6">
-                I've completed multiple software engineering internships working with production-level code.
+                I&apos;ve completed multiple software engineering internships working with production-level code.
               </p>
               <p className="mb-6">
                 A lot of my work centers on areas where reliability matters more than polish: health, fitness, and emergency response.
