@@ -42,7 +42,7 @@ export function AboutSection() {
                 I work primarily with full-stack applications and operate with AI/ML systems.
               </p>
               <p className="mb-6">
-                Outside of code, I&apos;m a national-level powerlifter on <span className="text-[#FF5722]">Longhorn Powerlifting</span> (check out my Instagram @nevlifts!)
+                Outside of code, I&apos;m a national-level powerlifter on <span className="text-[#FF5722]">Longhorn Powerlifting</span> (check out my Instagram @<a className="text-[#FF5722] underline underline-offset-2" href="https://www.instagram.com/nevlifts" target="_blank" rel="noreferrer">nevlifts</a>!)
               </p>
               <p className="mb-6">
                 I&apos;ve completed multiple software engineering internships working with production-level code.
