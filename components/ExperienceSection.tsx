@@ -14,14 +14,21 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    date: "2025–Present",
+    date: "Feb 2026–Present",
+    company: "TRNDG",
+    role: "Software Engineering Intern",
+    outcome: "Trade trends like stocks.",
+    techStack: "React Native, Expo, Node.js, Supabase",
+  },
+  {
+    date: "Dec 2025–Present",
     company: "D3 Research Lab",
     role: "AI Researcher",
     outcome: "Designed trust-verification protocols for human–AI agent teams.",
     techStack: "Python, PyTorch, Multi-agent systems",
   },
   {
-    date: "2025–Present",
+    date: "Sept 2025–Present",
     company: "Texas Convergent",
     role: "Software Engineer",
     outcome: "Shipped Pinpoint: <2s latency alerts for 100k+ concert attendees.",
