@@ -55,12 +55,6 @@ Full-stack housing analytics platform for cross-city comparison.
 
 ---
 
-### [Mood-Based Playlist Generator](https://github.com/guptaneev/mood-based_playlist_generator)
-
-Interactive mood analysis system for personalized playlist generation.
-
-**Technologies:** `Python` `REST APIs`
-
 **Links:** [GitHub Repository](https://github.com/guptaneev/mood-based_playlist_generator)
 
 ---
