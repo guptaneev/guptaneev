@@ -23,19 +23,19 @@ export function SignatureSection() {
                 <div>
                     <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Languages</h3>
                     <p className="font-serif text-xl leading-relaxed text-background/90">
-                        JavaScript, TypeScript, Python, Java, SQL, HTML/CSS
+                        JavaScript, TypeScript, Python, Java, SQL, HTML/CSS, C
                     </p>
                 </div>
                 <div>
                      <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Frameworks & Platforms</h3>
                     <p className="font-serif text-xl leading-relaxed text-background/90">
-                        React, React Native, Angular, Node.js, Expo, Firebase, MongoDB, REST APIs, Salesforce Apex
+                        React, React Native, Node.js, FastAPI, Firebase, Supabase, PostgreSQL, MongoDB, LangChain, ChromaDB
                     </p>
                 </div>
                  <div>
                      <h3 className="font-sans font-bold text-primary mb-4 tracking-widest uppercase text-sm">Tools & Practices</h3>
                     <p className="font-serif text-xl leading-relaxed text-background/90">
-                        Git, Docker, CI/CD, Agile, Scrum, NPM, Gradle, Tableau
+                        Git, Docker, CI/CD, pytest, Agile/Scrum
                     </p>
                 </div>
             </div>

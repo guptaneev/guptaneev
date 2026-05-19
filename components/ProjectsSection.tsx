@@ -33,30 +33,34 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
+    id: "strength-atlas",
+    anchorId: "strength-atlas",
+    title: "Strength Atlas",
+    thesis:
+      "Web truth engine for strength training: crawl, verify, and query evidence in sub-200ms.",
+    constraints: ["Python", "FastAPI", "PostgreSQL"],
+    outcome:
+      "Indexed 175+ programs and 476 claims across 83 sources with schema validation and URL quality scoring, sustaining 99% crawl success; validated reliability through a 120-test CI suite with 95% coverage.",
+    imageSrc: "/atlas.png",
+    imageAlt: "Strength Atlas application interface",
+    links: {
+      demo: "https://strength-atlas-ai.vercel.app/app",
+      github: "https://github.com/guptaneev/strength-atlas",
+    },
+  },
+  {
     id: "pinpoint",
     anchorId: "emergency-response",
     title: "Pinpoint",
     thesis:
       "Concert safety can't wait. Alerts delivered to EMS in <2 seconds.",
-    constraints: ["React Native", "Expo", "Typescript", "MongoDB"],
+    constraints: ["React Native", "Expo", "TypeScript", "MongoDB"],
     outcome: "Live heatmaps + instant alerts for 100,000+ attendees",
     images: ["/pinpoint1.png", "/pinpoint2.png"],
     imageAlt: "Pinpoint concert safety platform screenshots",
     links: {
       github: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
     },
-  },
-  {
-    id: "d3",
-    anchorId: "constraint-solver",
-    title: "D3 Lab: Trust Prism",
-    thesis:
-      "When to trust AI? A multi-agent system for studying human–AI dynamics.",
-    constraints: ["Python", "Procedural generation", "Difficulty scaling"],
-    outcome: "Backend logic for large-scale trust experiments",
-    imageSrc: "/trustprism.png",
-    imageAlt: "AI trust research visualization",
-    links: {},
   },
   {
     id: "peco",

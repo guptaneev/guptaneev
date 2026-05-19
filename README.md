@@ -1,66 +1,31 @@
-# Neev Gupta
+# Projects
 
-**Full-Stack AI Developer | CS @ UT Austin**
+### [Strength Atlas](https://github.com/guptaneev/strength-atlas)
+- **Summary:** Evidence search engine for strength training that crawls, normalizes, and serves claims with fast query latency.
+- **Notable:** Indexed 175+ programs and 476 claims across 83 sources with high crawl reliability.
+- **Stack:** Python, FastAPI, PostgreSQL
 
-**Currently:** SWE @ Texas Convergent, AI Researcher @ D3 Research Lab  
-**Previously:** SWE @ H-E-B Digital & Zonda
+### [PeCo](https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone)
+- **Summary:** RAG-powered AI fitness coach for personalized guidance.
+- **Notable:** Built as a Generative AI Intensive capstone focused on practical coaching use cases.
+- **Stack:** Python, LangChain, ChromaDB, RAG
 
----
+### [Nudge](https://github.com/guptaneev/Nudge)
+- **Summary:** IoT pressure-monitoring system for wheelchair users with a sensor mat, BLE pipeline, and mobile app.
+- **Notable:** Won Best Business ($200).
+- **Stack:** React Native, BLE, Embedded C, Sensor Hardware
 
-## Featured Projects
+### [StormOps Console](https://github.com/guptaneev/StormOps-Console)
+- **Summary:** Agentic risk analysis platform for weather-driven energy grid operations.
+- **Notable:** Built synchronized agents and orchestration flows to convert weather/map context into operational directives.
+- **Stack:** Python, RAG, Vector Database, Multi-Agent Systems
 
-### [Pinpoint - Concert Safety Platform](https://github.com/Texas-Convergent-Emergency-Team/Pinpoint)
+### [Redact](https://github.com/guptaneev/Redact)
+- **Summary:** AI scam-detection app that analyzes text and images to flag phishing and fraud signals.
+- **Notable:** Won 4th place at AkashML Hackathon.
+- **Stack:** LLM APIs, OCR, Full-Stack Web
 
-> **Concert safety platform for large live events**
-
-Concert safety platform combining live crowd visibility with direct communication to on-site medical teams. Powers real-time heatmaps and enables attendees to notify EMS in under 2 seconds across events with 100,000+ attendees.
-
-**Technologies:** `TypeScript` `React` `Node.js` `Docker`
-
-**Links:** [GitHub Repository](https://github.com/Texas-Convergent-Emergency-Team/Pinpoint)
-
----
-
-### [PeCo - Generative AI in the Gym](https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone)
-
-> **Gen AI Intensive Course Capstone Project**
-
-Conversational personal fitness coach using advanced AI techniques: prompt engineering, embeddings, RAG, and search grounding. Tackles barriers to gym access by delivering personalized coaching at scale.
-
-**Technologies:** `Python` `LangChain` `RAG` `ChromaDB`
-
-**Links:** [Demo](https://www.youtube.com/watch?v=FMurg0jzzXQ) • [Blogpost](https://www.linkedin.com/pulse/how-can-we-use-generative-ai-gym-neev-gupta-iurnc/?trackingId=NTVZZCONS2eOJiMeSGJSww%3D%3D) • [Kaggle Notebook](https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone)
-
----
-
-## Other Projects
-
-### [Redact](https://github.com/ChetanGorantla/redact)
-
-AI-powered scam detection platform that analyzes text and images using LLMs and OCR to flag phishing and fraud. Won 4th place — AkashML Hackathon.
-
-**Technologies:** `Akash API` `Akash Console` `OCR`
-
-**Links:** [GitHub Repository](https://github.com/ChetanGorantla/redact)
-
----
-
-### [Adoore - City Comparison Tool](https://github.com/guptaneev/adoore)
-
-Full-stack housing analytics platform for cross-city comparison.
-
-**Technologies:** `Angular` `Java` `REST APIs`
-
-**Links:** [GitHub Repository](https://github.com/guptaneev/adoore)
-
----
-
-**Links:** [GitHub Repository](https://github.com/guptaneev/mood-based_playlist_generator)
-
----
-
-## Connect
-
-- **LinkedIn:** [linkedin.com/in/neevgupta](https://www.linkedin.com/in/neevgupta/)
-- **Website:** [neevgupta.com](https://neevgupta.com)
-- **Email:** neevgupta@utexas.edu
+### [Adoore](https://github.com/guptaneev/adoore)
+- **Summary:** Housing analytics platform for cross-city comparison and market exploration.
+- **Notable:** Used at Zonda to support large-scale metro-level analysis.
+- **Stack:** Angular, Java, REST APIs

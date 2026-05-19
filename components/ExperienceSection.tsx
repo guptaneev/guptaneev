@@ -7,12 +7,19 @@ interface Experience {
   date: string;
   company: string;
   role: string;
-  outcome: string;
+  outcome: string | string[];
   techStack?: string;
-  link?: string;
+  links?: { label: string; url: string }[];
 }
 
 const experiences: Experience[] = [
+  {
+    date: "Jun 2026–Aug 2026",
+    company: "State Farm",
+    role: "Incoming Software Engineering Intern - Data & AI",
+    outcome: "Incoming intern role focused on data and AI systems.",
+    techStack: "Data Engineering, AI/ML",
+  },
   {
     date: "Feb 2026–Present",
     company: "TRNDG",
@@ -24,23 +31,36 @@ const experiences: Experience[] = [
     date: "Dec 2025–Present",
     company: "D3 Research Lab",
     role: "AI Researcher",
-    outcome: "Designed trust-verification protocols for human–AI agent teams.",
+    outcome:
+      "Built a human-AI trust simulation platform that turns complex interaction behavior into clear, actionable user profiles.",
     techStack: "Python, PyTorch, Multi-agent systems",
   },
   {
     date: "Sept 2025–Present",
     company: "Texas Convergent",
     role: "Software Engineer",
-    outcome: "Shipped Pinpoint: <2s latency alerts for 100k+ concert attendees.",
-    techStack: "React, Expo, Node.js, MongoDB",
-    link: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
+    outcome: [
+      "Launched Pinpoint: live crowd heatmaps and direct-to-EMS alerts for safer large events.",
+      "Built Nudge: an IoT pressure-monitoring system for wheelchair users with BLE + React Native. Won Best Business ($200).",
+    ],
+    techStack: "React Native, Expo, Node.js, MongoDB, BLE, Embedded C",
+    links: [
+      {
+        label: "View Pinpoint",
+        url: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
+      },
+      {
+        label: "View Nudge",
+        url: "https://github.com/guptaneev/Nudge",
+      },
+    ],
   },
   {
     date: "Summer 2025",
     company: "H-E-B Digital",
     role: "Software Engineering Intern",
     outcome: "Built intranet modules serving 120k daily active employees.",
-    techStack: "React, TypeScript, Salesforce Apex, ",
+    techStack: "React, TypeScript, Salesforce Apex",
   },
   {
     date: "Summer 2024",
@@ -48,7 +68,7 @@ const experiences: Experience[] = [
     role: "Software Engineering Intern",
     outcome: "Architected housing analytics engine for 50+ metro regions.",
     techStack: "Angular, Java, REST APIs",
-    link: "https://github.com/guptaneev/adoore"
+    links: [{ label: "View Project", url: "https://github.com/guptaneev/adoore" }],
   },
 ];
 
@@ -167,9 +187,23 @@ function ExperienceItem({
         className="relative pl-16 lg:pl-0 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 lg:translate-x-0 lg:group-hover:translate-x-0 transition-all duration-400 lg:-translate-x-5"
       >
         {/* Description */}
-        <div className="font-serif text-lg sm:text-xl leading-relaxed text-foreground/80 mb-4">
-          {experience.outcome}
-        </div>
+        {experience.outcome &&
+          (Array.isArray(experience.outcome) ? (
+            <div className="space-y-3 mb-4">
+              {experience.outcome.map((line) => (
+                <div
+                  key={line}
+                  className="font-serif text-lg sm:text-xl leading-relaxed text-foreground/80"
+                >
+                  {line}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="font-serif text-lg sm:text-xl leading-relaxed text-foreground/80 mb-4">
+              {experience.outcome}
+            </div>
+          ))}
 
         {/* Tech Stack */}
         {experience.techStack && (
@@ -178,16 +212,21 @@ function ExperienceItem({
           </div>
         )}
 
-        {/* Link */}
-        {experience.link && (
-          <a
-            href={experience.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-sm text-[#FF5722] hover:underline inline-block"
-          >
-            → View Project
-          </a>
+        {/* Links */}
+        {experience.links && experience.links.length > 0 && (
+          <div className="flex flex-col items-start gap-1">
+            {experience.links.map((link) => (
+              <a
+                key={link.url}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-sm text-[#FF5722] hover:underline inline-block"
+              >
+                → {link.label}
+              </a>
+            ))}
+          </div>
         )}
       </div>
     </div>

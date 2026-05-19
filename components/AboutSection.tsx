@@ -51,7 +51,7 @@ export function AboutSection() {
                 A lot of my work centers on areas where reliability matters more than polish: health, fitness, and emergency response.
               </p>
               <p className="mb-3">
-                <span className="text-[#FF5722]">Currently</span>: SWE @ TRNDG, AI Research @ D3 Lab (UT Austin)
+                <span className="text-[#FF5722]">Currently</span>: SWE Intern @ State Farm
               </p>
               <p>
                 <span className="text-[#FF5722]">Previously</span>: SWE Intern @ H-E-B, Zonda
