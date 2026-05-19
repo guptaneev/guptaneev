@@ -15,6 +15,11 @@
 - **Notable:** Won Best Business ($200).
 - **Stack:** React Native, BLE, Embedded C, Sensor Hardware
 
+### [Pinpoint](https://github.com/Texas-Convergent-Emergency-Team/Pinpoint)
+- **Summary:** Real-time crowd safety platform for large events with live heatmaps and direct-to-EMS alerts.
+- **Notable:** Deployed for high-density venues to speed emergency response workflows.
+- **Stack:** React Native, Expo, Node.js, MongoDB
+
 ### [StormOps Console](https://github.com/guptaneev/StormOps-Console)
 - **Summary:** Agentic risk analysis platform for weather-driven energy grid operations.
 - **Notable:** Built synchronized agents and orchestration flows to convert weather/map context into operational directives.
