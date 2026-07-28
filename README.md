@@ -1,36 +1,22 @@
-# Projects
+### Hey, I'm Neev 👋
 
-### [Strength Atlas](https://github.com/guptaneev/strength-atlas)
-- **Summary:** Evidence search engine for strength training that crawls, normalizes, and serves claims with fast query latency.
-- **Notable:** Indexed 175+ programs and 476 claims across 83 sources with high crawl reliability.
-- **Stack:** Python, FastAPI, PostgreSQL
+CS + Economics @ UT Austin '28. Right now I'm building LLM evaluation infrastructure
+at **State Farm** and doing human-AI trust research at **UT Austin's D3 Lab**.
 
-### [PeCo](https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone)
-- **Summary:** RAG-powered AI fitness coach for personalized guidance.
-- **Notable:** Built as a Generative AI Intensive capstone focused on practical coaching use cases.
-- **Stack:** Python, LangChain, ChromaDB, RAG
+Most of what I build is AI systems plus the tooling that proves they actually work —
+evaluators, constraint solvers, retrieval pipelines, and the backends underneath them.
 
-### [Nudge](https://github.com/guptaneev/Nudge)
-- **Summary:** IoT pressure-monitoring system for wheelchair users with a sensor mat, BLE pipeline, and mobile app.
-- **Notable:** Won Best Business ($200).
-- **Stack:** React Native, BLE, Embedded C, Sensor Hardware
+[Portfolio](https://neevgupta.com) · [LinkedIn](https://linkedin.com/in/neevgupta)
 
-### [Pinpoint](https://github.com/Texas-Convergent-Emergency-Team/Pinpoint)
-- **Summary:** Real-time crowd safety platform for large events with live heatmaps and direct-to-EMS alerts.
-- **Notable:** Deployed for high-density venues to speed emergency response workflows.
-- **Stack:** React Native, Expo, Node.js, MongoDB
+---
 
-### [StormOps Console](https://github.com/guptaneev/StormOps-Console)
-- **Summary:** Agentic risk analysis platform for weather-driven energy grid operations.
-- **Notable:** Built synchronized agents and orchestration flows to convert weather/map context into operational directives.
-- **Stack:** Python, RAG, Vector Database, Multi-Agent Systems
+### Projects
 
-### [Redact](https://github.com/guptaneev/Redact)
-- **Summary:** AI scam-detection app that analyzes text and images to flag phishing and fraud signals.
-- **Notable:** Won 4th place at AkashML Hackathon.
-- **Stack:** LLM APIs, OCR, Full-Stack Web
-
-### [Adoore](https://github.com/guptaneev/adoore)
-- **Summary:** Housing analytics platform for cross-city comparison and market exploration.
-- **Notable:** Used at Zonda to support large-scale metro-level analysis.
-- **Stack:** Angular, Java, REST APIs
+| | What it is | Stack |
+|---|---|---|
+| **[Strength Atlas](https://github.com/guptaneev/strength-atlas)** | Evidence search engine for strength training. Crawls and normalizes coaching claims, then serves them with full source provenance in sub-200ms. 175+ programs, 476 claims, 83 sources, 95% test coverage. | Python · FastAPI · Postgres · Supabase |
+| **[StormOps Console](https://github.com/guptaneev/StormOps-Console)** | Agentic risk-analysis platform that turns weather and grid context into operational directives for energy operators. | Python · RAG · multi-agent orchestration |
+| **[Pinpoint](https://github.com/Texas-Convergent-Emergency-Team/Pinpoint)** | Real-time crowd-safety platform for large venues — live density heatmaps and sub-2s EMS alerts across three user roles. | React Native · Node/Express · MongoDB · WebSockets |
+| **[neetcode-gpt](https://github.com/guptaneev/neetcode-gpt)** | A GPT built from scratch — attention, tokenization, and training loop, no framework abstractions. | Python · PyTorch |
+| **[Nudge](https://github.com/guptaneev/Nudge)** | IoT pressure monitoring for wheelchair users. ESP32 firmware reads a 16×16 sensor matrix over BLE into a mobile app and Supabase backend. | ESP32 · BLE · React Native · Supabase |
+| **[PeCo](https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone)** | RAG-powered strength coach. Certified capstone for Google's Gen AI Intensive. | Python · Gemini · ChromaDB |
