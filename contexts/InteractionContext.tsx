@@ -23,13 +23,21 @@ export function InteractionProvider({ children }: { children: ReactNode }) {
   console.log("Current active project:", activeProject);
 
   const projectThemes = {
+    "strength-atlas": {
+      bg: "hsl(0, 0%, 95%)",
+      tagline: "Evidence for strength training",
+    },
     pinpoint: {
       bg: "rgba(255, 87, 34, 0.05)", // Warm orange tint
       tagline: "Concert safety at scale",
     },
-    d3: {
-      bg: "hsl(0, 0%, 95%)", // Light neutral to match others
-      tagline: "Trust in human–AI collaboration",
+    "stormops-console": {
+      bg: "hsl(0, 0%, 95%)",
+      tagline: "Operational intelligence for the grid",
+    },
+    nudge: {
+      bg: "rgba(255, 87, 34, 0.05)",
+      tagline: "Pressure monitoring for wheelchair users",
     },
     peco: {
       bg: "hsl(0, 0%, 95%)", // Light neutral to match others

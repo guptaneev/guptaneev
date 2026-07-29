@@ -3,7 +3,6 @@
 import { HeroSection } from "@/components/HeroSection";
 import { AboutSection } from "@/components/AboutSection";
 import { CaseStudiesSection } from "@/components/ProjectsSection";
-import { SignatureSection } from "@/components/SignatureSection";
 import { ExperienceSection } from "@/components/ExperienceSection";
 import { ContactSection } from "@/components/ContactSection";
 import { ScrollProgress } from "@/components/ScrollProgress";
@@ -38,11 +37,6 @@ function PortfolioContent() {
 
       {/* More Projects - Brutalist Link */}
       <MoreProjectsSection />
-
-      {/* Signature Section - Technical Skills */}
-      <div id="technical-arsenal">
-        <SignatureSection />
-      </div>
 
       {/* Experience */}
       <div id="work-history">

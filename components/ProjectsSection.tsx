@@ -19,6 +19,7 @@ interface CaseStudy {
   thesis: string;
   constraints: string[];
   outcome: string;
+  metric?: string;
   imageSrc?: string;
   images?: string[];
   imageAlt: string;
@@ -41,6 +42,7 @@ const caseStudies: CaseStudy[] = [
     constraints: ["Python", "FastAPI", "PostgreSQL"],
     outcome:
       "Indexed 175+ programs and 476 claims across 83 sources with schema validation and URL quality scoring, sustaining 99% crawl success; validated reliability through a 120-test CI suite with 95% coverage.",
+    metric: "175+ PROGRAMS · 476 CLAIMS · SUB-200MS",
     imageSrc: "/atlas.png",
     imageAlt: "Strength Atlas application interface",
     links: {
@@ -56,10 +58,40 @@ const caseStudies: CaseStudy[] = [
       "Concert safety can't wait. Alerts delivered to EMS in <2 seconds.",
     constraints: ["React Native", "Expo", "TypeScript", "MongoDB"],
     outcome: "Live heatmaps + instant alerts for 100,000+ attendees",
+    metric: "100,000+ ATTENDEE VENUES · <2S ALERTS",
     images: ["/pinpoint1.png", "/pinpoint2.png"],
     imageAlt: "Pinpoint concert safety platform screenshots",
     links: {
       github: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
+    },
+  },
+  {
+    id: "stormops-console",
+    anchorId: "stormops-console",
+    title: "StormOps Console",
+    thesis:
+      "Agentic risk-analysis platform that turns weather and grid context into operational directives for energy operators.",
+    constraints: ["Python", "RAG", "Multi-Agent"],
+    outcome: "",
+    imageSrc: "/stormops-console.jpg",
+    imageAlt: "StormOps Console AI grid operations interface",
+    links: {
+      github: "https://github.com/guptaneev/StormOps-Console",
+    },
+  },
+  {
+    id: "nudge",
+    anchorId: "nudge",
+    title: "Nudge",
+    thesis:
+      "IoT pressure monitoring for wheelchair users. ESP32 firmware reads a 16×16 sensor matrix over BLE into a React Native app and Supabase backend.",
+    constraints: ["ESP32", "BLE", "React Native", "Supabase"],
+    outcome: "",
+    metric: "16×16 SENSOR MATRIX · BLE",
+    images: ["/nudge-home.jpg", "/nudge-tracker.jpg"],
+    imageAlt: "Nudge wheelchair pressure monitoring mobile app screens",
+    links: {
+      github: "https://github.com/guptaneev/Nudge",
     },
   },
   {
@@ -70,6 +102,7 @@ const caseStudies: CaseStudy[] = [
       "Personalized training at scale. RAG-powered AI coach using ChromaDB.",
     constraints: ["Python", "LangChain", "ChromaDB", "RAG"],
     outcome: "Gen AI Intensive capstone with search grounding",
+    metric: "40+ DOCUMENTS · 90%+ RETRIEVAL ACCURACY",
     imageSrc: "/peco.jpg",
     imageAlt: "PeCo AI fitness coach interface",
     links: {
@@ -196,6 +229,12 @@ function CaseStudyCard({
             </span>
           ))}
         </div>
+
+        {study.metric && (
+          <div className="font-mono text-xs uppercase tracking-widest text-foreground/60">
+            {study.metric}
+          </div>
+        )}
 
         <div className="flex gap-4 pt-4">
           {study.links && Object.entries(study.links).map(([key, value]) => {

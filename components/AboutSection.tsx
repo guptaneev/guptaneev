@@ -39,22 +39,22 @@ export function AboutSection() {
                 Hey! I&apos;m a computer science student at UT Austin. 🤘
               </p>
               <p className="mb-6">
-                I work primarily with full-stack applications and operate with AI/ML systems.
+                I started building because of the gym - a fitness app in high school, then a RAG-powered coach, then a search engine that indexes what strength coaches actually claim and shows you the source behind every one.
               </p>
               <p className="mb-6">
-                Outside of code, I&apos;m a national-level powerlifter on <span className="text-[#FF5722]">Longhorn Powerlifting</span> (check out my Instagram @<a className="text-[#FF5722] underline underline-offset-2" href="https://www.instagram.com/nevlifts" target="_blank" rel="noreferrer">nevlifts</a>!)
+                Somewhere in there I realized the hard part was never building the thing. It was knowing whether the answer was right. That&apos;s most of what I do now: evaluation infrastructure for AI agents at State Farm, and constraint solvers for human-AI trust research at UT&apos;s D3 Lab.
               </p>
               <p className="mb-6">
-                I&apos;ve completed multiple software engineering internships working with production-level code.
+                Most of my work lands in places where reliability matters more than polish - health, fitness, and emergency response.
               </p>
               <p className="mb-6">
-                A lot of my work centers on areas where reliability matters more than polish: health, fitness, and emergency response.
+                Outside of code, I&apos;m a national-level powerlifter on <a className="text-[#FF5722]" href="https://www.utrecsports.org/sport-clubs/sport/powerlifting" target="_blank" rel="noreferrer">Longhorn Powerlifting</a> (check out my Instagram @<a className="text-[#FF5722] underline underline-offset-2" href="https://www.instagram.com/nevlifts" target="_blank" rel="noreferrer">nevlifts</a>!)
               </p>
               <p className="mb-3">
-                <span className="text-[#FF5722]">Currently</span>: SWE Intern @ State Farm
+                <span className="text-[#FF5722]">Currently</span>: SWE Intern @ State Farm · AI Research @ UT Austin D3 Lab
               </p>
               <p>
-                <span className="text-[#FF5722]">Previously</span>: SWE Intern @ H-E-B, Zonda
+                <span className="text-[#FF5722]">Previously</span>: SWE Intern @ TRNDG, H-E-B, Zonda
               </p>
             </div>
           </div>

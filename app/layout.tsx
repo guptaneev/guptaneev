@@ -30,7 +30,20 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Neev Gupta - Portfolio",
   description:
-    "Personal portfolio website showcasing my projects, experience, and skills.",
+    "CS + Economics student at UT Austin. I build AI systems and the tooling that proves they work.",
+  openGraph: {
+    title: "Neev Gupta - Portfolio",
+    description:
+      "CS + Economics student at UT Austin. I build AI systems and the tooling that proves they work.",
+    url: "https://neevgupta.com",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Neev Gupta - Portfolio",
+    description:
+      "CS + Economics student at UT Austin. I build AI systems and the tooling that proves they work.",
+  },
 };
 
 export default function RootLayout({

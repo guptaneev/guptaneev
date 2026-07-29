@@ -70,22 +70,22 @@ export function HeroSection() {
   }
 
   return (
-    <section className="min-h-[70vh] lg:h-[70vh] relative bg-[#E8E8E8] text-[#0A0A0A] font-sans selection:bg-[#FF5722] selection:text-white">
+    <section className="min-h-[70vh] xl:h-[70vh] relative bg-[#E8E8E8] text-[#0A0A0A] font-sans selection:bg-[#FF5722] selection:text-white">
       
-      <div className="relative z-10 w-full h-full flex flex-col p-6 sm:p-8 lg:p-12">
+      <div className="relative z-10 w-full h-full flex flex-col p-6 sm:p-8 xl:p-12">
         
         {/* Name and Tagline Container - Responsive layout */}
-        <div className="pt-8 sm:pt-12 lg:pt-0 lg:absolute lg:top-[15%] lg:left-[15%] lg:right-[8%] flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8 lg:gap-8">
+        <div className="pt-8 sm:pt-12 xl:pt-0 xl:absolute xl:top-[15%] xl:left-[15%] xl:right-[8%] flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8 xl:gap-8">
           
           {/* Name: Two lines, left-aligned */}
-          <div className="flex-shrink-0 relative pl-4 sm:pl-8 lg:pl-0">
+          <div className="flex-shrink-0 relative pl-4 sm:pl-8 xl:pl-0">
             {/* Decorative orange vertical lines - hidden on mobile, extend from page top to image */}
             <div 
-              className="hidden lg:block absolute -left-8 w-[3px] bg-[#FF5722]"
+              className="hidden xl:block absolute -left-8 w-[3px] bg-[#FF5722]"
               style={{ top: `-${nameOffset}px`, height: lineHeight }}
             ></div>
             <div 
-              className="hidden lg:block absolute -left-12 w-[3px] bg-[#FF5722]"
+              className="hidden xl:block absolute -left-12 w-[3px] bg-[#FF5722]"
               style={{ top: `-${nameOffset}px`, height: lineHeight }}
             ></div>
             
@@ -95,24 +95,20 @@ export function HeroSection() {
           </div>
 
           {/* Tagline: Right on desktop, below on mobile */}
-          <div className="flex-shrink-0 pt-0 lg:pt-4 flex flex-col items-start lg:items-end gap-6 lg:gap-8 pl-4 sm:pl-8 lg:pl-0">
-            <p className="font-mono text-base sm:text-lg lg:text-xl text-[#0A0A0A] tracking-wide leading-relaxed max-w-md lg:max-w-lg text-right">
-              I build <span className="text-[#FF5722]">full-stack</span> applications and research <span className="text-[#FF5722]">ML systems</span>.
+          <div className="flex-shrink-0 pt-0 xl:pt-4 flex flex-col items-start xl:items-end gap-6 xl:gap-8 pl-4 sm:pl-8 xl:pl-0">
+            <p className="font-mono text-base sm:text-lg xl:text-xl text-[#0A0A0A] tracking-wide leading-relaxed max-w-md xl:max-w-lg text-right">
+              I build <span className="text-[#FF5722]">AI systems</span> and the tooling that <span className="text-[#FF5722]">proves they work</span>.
             </p>
             
             {/* Quick Access Links */}
-            <div className="flex flex-col items-start lg:items-end gap-3 lg:-mr-8 mt-4 lg:mt-12">
+            <div className="flex flex-col items-start xl:items-end gap-3 xl:-mr-8 mt-4 xl:mt-12">
               <span className="font-mono text-xs uppercase tracking-widest text-[#0A0A0A] opacity-60">Quick Access</span>
               <div className="flex flex-col items-start lg:items-end gap-3 border-2 border-[#0A0A0A] bg-[#F5F5F5] px-4 sm:px-6 py-3 sm:py-4">
-                <a href="#selected-work" onClick={(e) => handleSmoothScroll(e, "selected-work")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
+                <a href="#selected-work" onClick={(e) => handleSmoothScroll(e, "selected-work")} className="font-mono text-base xl:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
                   Selected Projects
                 </a>
-                <a href="#technical-arsenal" onClick={(e) => handleSmoothScroll(e, "technical-arsenal")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
-                  Technical Skills
-                </a>
-                <a href="#work-history" onClick={(e) => handleSmoothScroll(e, "work-history")} className="font-mono text-base lg:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
+                <a href="#work-history" onClick={(e) => handleSmoothScroll(e, "work-history")} className="font-mono text-base xl:text-lg text-[#0A0A0A] hover:text-[#FF5722] transition-colors duration-200 group">
                   <span className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 mr-2">→</span>
                   Work History
                 </a>
@@ -122,7 +118,7 @@ export function HeroSection() {
         </div>
 
         {/* Subheader: Below name - responsive positioning */}
-        <div className="mt-8 lg:mt-0 lg:absolute lg:top-[calc(15%+clamp(10.8rem,27vw,21.6rem)+2rem)] lg:left-[15%] flex flex-col gap-3 pl-4 sm:pl-8 lg:pl-0">
+        <div className="mt-8 xl:mt-0 xl:absolute xl:top-[calc(15%+clamp(10.8rem,27vw,21.6rem)+2rem)] xl:left-[15%] flex flex-col gap-3 pl-4 sm:pl-8 xl:pl-0">
           <h2 className="font-sans text-sm sm:text-base md:text-lg font-medium uppercase tracking-wider">
             AUSTIN, TX • CS @ UT AUSTIN
           </h2>
@@ -131,6 +127,7 @@ export function HeroSection() {
             <a href="mailto:neevgupta@utexas.edu" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">Email</a>
             <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LinkedIn</a>
             <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GitHub</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">Resume</a>
           </div>
         </div>
 
@@ -139,4 +136,3 @@ export function HeroSection() {
     </section>
   );
 }
-

@@ -14,29 +14,29 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    date: "Jun 2026–Aug 2026",
+    date: "Jun 2026–Present",
     company: "State Farm",
-    role: "Incoming Software Engineering Intern - Data & AI",
-    outcome: "Incoming intern role focused on data and AI systems.",
-    techStack: "Data Engineering, AI/ML",
+    role: "Software Engineering Intern - Data & AI",
+    outcome: "Architected evaluation infrastructure for AI agents across data, semantic-layer, tool-use, and answer-quality dimensions.",
+    techStack: "Data Engineering, AI/ML, Python, LLM Evaluation",
   },
   {
-    date: "Feb 2026–Present",
+    date: "Dec 2025–Present",
+    company: "UT Austin - D3 Lab",
+    role: "AI Research Assistant - Trust Prism",
+    outcome:
+      "Built a human-AI trust simulation platform that turns complex interaction behavior into clear, actionable user profiles.",
+    techStack: "Python, PyTorch, Multi-agent systems",
+  },
+  {
+    date: "Feb 2026–May 2026",
     company: "TRNDG",
     role: "Software Engineering Intern",
     outcome: "Trade trends like stocks.",
     techStack: "React Native, Expo, Node.js, Supabase",
   },
   {
-    date: "Dec 2025–Present",
-    company: "D3 Research Lab",
-    role: "AI Researcher",
-    outcome:
-      "Built a human-AI trust simulation platform that turns complex interaction behavior into clear, actionable user profiles.",
-    techStack: "Python, PyTorch, Multi-agent systems",
-  },
-  {
-    date: "Sept 2025–Present",
+    date: "Sept 2025–May 2026",
     company: "Texas Convergent",
     role: "Software Engineer",
     outcome: [
@@ -64,7 +64,7 @@ const experiences: Experience[] = [
   },
   {
     date: "Summer 2024",
-    company: "Zonda",
+    company: "Zonda Home",
     role: "Software Engineering Intern",
     outcome: "Architected housing analytics engine for 50+ metro regions.",
     techStack: "Angular, Java, REST APIs",
