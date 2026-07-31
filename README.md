@@ -15,6 +15,7 @@ evaluators, constraint solvers, retrieval pipelines, and the backends underneath
 | | What it is | Stack |
 |---|---|---|
 | **[Strength Atlas](https://github.com/guptaneev/strength-atlas)** | Evidence search engine for strength training. Crawls and normalizes coaching claims, then serves them with full source provenance in sub-200ms. 175+ programs, 476 claims, 83 sources, 95% test coverage. | Python · FastAPI · Postgres · Supabase |
+| **[predict-strength](https://github.com/guptaneev/predict-strength)** | From-scratch ML pipeline testing how predictable strength progression is from competition-only data, with leakage-safe modeling and baseline/model comparisons. | Python · scikit-learn · XGBoost · pytest |
 | **[StormOps Console](https://github.com/guptaneev/StormOps-Console)** | Agentic risk-analysis platform that turns weather and grid context into operational directives for energy operators. | Python · RAG · multi-agent orchestration |
 | **[Pinpoint](https://github.com/Texas-Convergent-Emergency-Team/Pinpoint)** | Real-time crowd-safety platform for large venues — live density heatmaps and sub-2s EMS alerts across three user roles. | React Native · Node/Express · MongoDB · WebSockets |
 | **[neetcode-gpt](https://github.com/guptaneev/neetcode-gpt)** | A GPT built from scratch — attention, tokenization, and training loop, no framework abstractions. | Python · PyTorch |
