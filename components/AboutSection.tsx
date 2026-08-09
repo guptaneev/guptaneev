@@ -51,10 +51,10 @@ export function AboutSection() {
                 Outside of code, I&apos;m a national-level powerlifter on <a className="text-[#FF5722]" href="https://www.utrecsports.org/sport-clubs/sport/powerlifting" target="_blank" rel="noreferrer">Longhorn Powerlifting</a> (check out my Instagram @<a className="text-[#FF5722] underline underline-offset-2" href="https://www.instagram.com/nevlifts" target="_blank" rel="noreferrer">nevlifts</a>!)
               </p>
               <p className="mb-3">
-                <span className="text-[#FF5722]">Currently</span>: SWE Intern @ State Farm · AI Research @ UT Austin D3 Lab
+                <span className="text-[#FF5722]">Currently</span>: AI Research @ UT Austin: Trust Prism
               </p>
               <p>
-                <span className="text-[#FF5722]">Previously</span>: SWE Intern @ TRNDG, H-E-B, Zonda
+                <span className="text-[#FF5722]">Previously</span>: SWE Intern @ State Farm, TRNDG, H-E-B, Zonda
               </p>
             </div>
           </div>
