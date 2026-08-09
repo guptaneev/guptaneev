@@ -14,19 +14,19 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    date: "Jun 2026–Present",
+    date: "Dec 2025–Present",
+    company: "UT Austin: Trust Prism",
+    role: "AI Researcher",
+    outcome:
+      "Built a human-AI trust simulation platform that turns complex interaction behavior into clear, actionable user profiles.",
+    techStack: "Python, PyTorch, Multi-agent systems",
+  },
+  {
+    date: "Jun 2026–Aug 2026",
     company: "State Farm",
     role: "Software Engineering Intern - Data & AI",
     outcome: "Architected evaluation infrastructure for AI agents across data, semantic-layer, tool-use, and answer-quality dimensions.",
     techStack: "Data Engineering, AI/ML, Python, LLM Evaluation",
-  },
-  {
-    date: "Dec 2025–Present",
-    company: "UT Austin - D3 Lab",
-    role: "AI Research Assistant - Trust Prism",
-    outcome:
-      "Built a human-AI trust simulation platform that turns complex interaction behavior into clear, actionable user profiles.",
-    techStack: "Python, PyTorch, Multi-agent systems",
   },
   {
     date: "Feb 2026–May 2026",
