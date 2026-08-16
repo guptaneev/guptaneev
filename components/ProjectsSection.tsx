@@ -38,7 +38,7 @@ const caseStudies: CaseStudy[] = [
     anchorId: "strength-atlas",
     title: "Strength Atlas",
     thesis:
-      "Web truth engine for strength training: crawl, verify, and query evidence in sub-200ms.",
+      "Web truth engine for strength training: crawl, verify, and rank evidence with a fine-tuned reranker in sub-200ms.",
     constraints: ["Python", "FastAPI", "PostgreSQL"],
     outcome:
       "Indexed 175+ programs and 476 claims across 83 sources with schema validation and URL quality scoring, sustaining 99% crawl success; validated reliability through a 120-test CI suite with 95% coverage.",
@@ -46,7 +46,7 @@ const caseStudies: CaseStudy[] = [
     imageSrc: "/atlas.png",
     imageAlt: "Strength Atlas application interface",
     links: {
-      demo: "https://strength-atlas-ai.vercel.app/app",
+      demo: "https://strength-atlas-5bejgqq6uq-uc.a.run.app/app",
       github: "https://github.com/guptaneev/strength-atlas",
     },
   },
