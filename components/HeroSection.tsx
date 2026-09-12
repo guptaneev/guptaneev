@@ -81,11 +81,11 @@ export function HeroSection() {
           <div className="flex-shrink-0 relative pl-4 sm:pl-8 xl:pl-0">
             {/* Decorative orange vertical lines - hidden on mobile, extend from page top to image */}
             <div 
-              className="hidden xl:block absolute -left-8 w-[3px] bg-[#FF5722]"
+              className="hidden xl:block absolute -left-20 2xl:-left-8 w-[3px] bg-[#FF5722]"
               style={{ top: `-${nameOffset}px`, height: lineHeight }}
             ></div>
             <div 
-              className="hidden xl:block absolute -left-12 w-[3px] bg-[#FF5722]"
+              className="hidden xl:block absolute -left-24 2xl:-left-12 w-[3px] bg-[#FF5722]"
               style={{ top: `-${nameOffset}px`, height: lineHeight }}
             ></div>
             
