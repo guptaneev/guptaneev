@@ -1,7 +1,5 @@
 [Portfolio](https://neevgupta.com) · [LinkedIn](https://linkedin.com/in/neevgupta)
 
----
-
 ### Projects
 
 | | What it is | Stack |
