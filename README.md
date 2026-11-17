@@ -6,6 +6,7 @@
 
 | | What it is | Stack |
 |---|---|---|
+| **[Clue Benchmark](https://github.com/TrustPrism/clue-benchmark)** | Synthetic logic puzzle generator for studying reasoning, uncertainty and evidence sharing. Generate a case, check what can be inferred, and evaluate an agent without confusing a lucky guess with a supported answer. | Python · Agent evals |
 | **[Strength Atlas](https://github.com/guptaneev/strength-atlas)** | Evidence search engine for strength training. Crawls and normalizes coaching claims, then serves them with full source provenance in sub-200ms. Utilizes a fine-tuned reranker that increased nDCG@10 from 0.56 to 0.85 based on a cosine-similarity baseline. 175+ programs, 476 claims, 83 sources, 95% test coverage. | Python · PyTorch · FastAPI · Postgres · Supabase · Weights & Biases |
 | **[predict-strength](https://github.com/guptaneev/predict-strength)** | From-scratch ML pipeline testing how predictable strength progression is from competition-only data, with leakage-safe modeling and baseline/model comparisons. | Python · scikit-learn · XGBoost · pytest |
 | **[StormOps Console](https://github.com/guptaneev/StormOps-Console)** | Agentic risk-analysis platform that turns weather and grid context into operational directives for energy operators. | Python · RAG · multi-agent orchestration |
