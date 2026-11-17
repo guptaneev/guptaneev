@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 interface Experience {
   date: string;
   company: string;
+  companyUrl?: string;
   role: string;
   outcome: string | string[];
   techStack?: string;
@@ -23,6 +24,7 @@ const experiences: Experience[] = [
   {
     date: "Dec 2025–Present",
     company: "UT Austin: Trust Prism",
+    companyUrl: "https://trustprism.tacc.utexas.edu/",
     role: "Undergraduate Research Assistant",
     outcome:
       "LLM benchmarking & CSP solver",
@@ -113,9 +115,20 @@ function ExperienceItem({
         {/* Company, Date, Role */}
         <div className="border-b border-border pb-8 group-hover:border-[#FF5722] transition-colors duration-300">
           <div className="mb-4">
-            <h3 className={`font-sans font-bold text-2xl sm:text-3xl transition-colors inline-block text-foreground ${isHovered ? 'text-[#FF5722]' : ''}`}>
-              {experience.company}
-            </h3>
+            {experience.companyUrl ? (
+              <a
+                href={experience.companyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`font-sans font-bold text-2xl sm:text-3xl transition-colors inline-block text-foreground hover:text-[#FF5722] hover:underline underline-offset-4 ${isHovered ? 'text-[#FF5722]' : ''}`}
+              >
+                {experience.company}
+              </a>
+            ) : (
+              <h3 className={`font-sans font-bold text-2xl sm:text-3xl transition-colors inline-block text-foreground ${isHovered ? 'text-[#FF5722]' : ''}`}>
+                {experience.company}
+              </h3>
+            )}
             <div className="font-mono text-xs text-foreground/50 mt-1 uppercase tracking-wider">
               {experience.date}
             </div>
