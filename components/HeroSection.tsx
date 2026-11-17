@@ -1,11 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Github, Linkedin, Mail } from "lucide-react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  const [lineHeight, setLineHeight] = useState("150vh");
-  const [nameOffset, setNameOffset] = useState(0);
+  const [lineHeight, setLineHeight] = useState("0px");
 
   // Smooth scroll handler
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -40,25 +40,32 @@ export function HeroSection() {
 
   useEffect(() => {
     setMounted(true);
-    
-    // Calculate the height from page top to AboutSection image and name offset
-    const calculateLineHeight = () => {
-      const nameElement = document.querySelector('.font-playfair');
-      const aboutImage = document.querySelector('[alt="Portrait of Neev Gupta"]');
-      
-      if (nameElement && aboutImage) {
-        const nameTop = nameElement.getBoundingClientRect().top + window.scrollY;
-        const imageTop = aboutImage.getBoundingClientRect().top + window.scrollY;
-        setNameOffset(nameTop);
-        setLineHeight(`${imageTop}px`);
+
+    const updateLineHeight = () => {
+      const portraitAnchor = document.getElementById("about-portrait-anchor");
+      if (portraitAnchor) {
+        const top = portraitAnchor.getBoundingClientRect().top + window.scrollY;
+        setLineHeight(`${Math.max(0, Math.round(top))}px`);
       }
     };
 
-    // Wait for images to load before calculating
-    setTimeout(calculateLineHeight, 100);
-    window.addEventListener('resize', calculateLineHeight);
-    
-    return () => window.removeEventListener('resize', calculateLineHeight);
+    const frame = window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(updateLineHeight);
+    });
+    const timeout = window.setTimeout(updateLineHeight, 600);
+    window.addEventListener("resize", updateLineHeight);
+
+    const portraitAnchor = document.getElementById("about-portrait-anchor");
+    const observer = portraitAnchor ? new ResizeObserver(updateLineHeight) : null;
+    observer?.observe(portraitAnchor as Element);
+    document.fonts?.ready.then(updateLineHeight);
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+      window.clearTimeout(timeout);
+      window.removeEventListener("resize", updateLineHeight);
+      observer?.disconnect();
+    };
   }, []);
 
   if (!mounted) {
@@ -70,25 +77,25 @@ export function HeroSection() {
   }
 
   return (
-    <section className="min-h-[70vh] xl:h-[70vh] relative bg-[#E8E8E8] text-[#0A0A0A] font-sans selection:bg-[#FF5722] selection:text-white">
-      
-      <div className="relative z-10 w-full h-full flex flex-col p-6 sm:p-8 xl:p-12">
+    <section className="min-h-[64vh] xl:h-[64vh] relative bg-[#E8E8E8] text-[#0A0A0A] font-sans selection:bg-[#FF5722] selection:text-white">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[calc(15%_-_5rem)] top-0 z-30 hidden w-[3px] bg-[#FF5722] xl:block 2xl:left-[calc(15%_-_2rem)]"
+        style={{ height: lineHeight }}
+      />
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-[calc(15%_-_6rem)] top-0 z-30 hidden w-[3px] bg-[#FF5722] xl:block 2xl:left-[calc(15%_-_3rem)]"
+        style={{ height: lineHeight }}
+      />
+
+      <div className="relative z-10 flex h-full min-w-0 w-full flex-col p-6 sm:p-8 xl:p-12">
         
         {/* Name and Tagline Container - Responsive layout */}
         <div className="pt-8 sm:pt-12 xl:pt-0 xl:absolute xl:top-[15%] xl:left-[15%] xl:right-[8%] flex flex-col xl:flex-row xl:items-start xl:justify-between gap-8 xl:gap-8">
           
           {/* Name: Two lines, left-aligned */}
           <div className="flex-shrink-0 relative pl-4 sm:pl-8 xl:pl-0">
-            {/* Decorative orange vertical lines - hidden on mobile, extend from page top to image */}
-            <div 
-              className="hidden xl:block absolute -left-20 2xl:-left-8 w-[3px] bg-[#FF5722]"
-              style={{ top: `-${nameOffset}px`, height: lineHeight }}
-            ></div>
-            <div 
-              className="hidden xl:block absolute -left-24 2xl:-left-12 w-[3px] bg-[#FF5722]"
-              style={{ top: `-${nameOffset}px`, height: lineHeight }}
-            ></div>
-            
             <h1 className="font-playfair font-black italic tracking-tighter leading-[0.85] text-[#0A0A0A]" style={{ fontSize: "clamp(3.5rem, 13.5vw, 10.8rem)" }}>
               Neev<br/>Gupta
             </h1>
@@ -96,10 +103,6 @@ export function HeroSection() {
 
           {/* Tagline: Right on desktop, below on mobile */}
           <div className="flex-shrink-0 pt-0 xl:pt-4 flex flex-col items-start xl:items-end gap-6 xl:gap-8 pl-4 sm:pl-8 xl:pl-0">
-            <p className="font-mono text-base sm:text-lg xl:text-xl text-[#0A0A0A] tracking-wide leading-relaxed max-w-md xl:max-w-lg text-right">
-              I build <span className="text-[#FF5722]">AI systems</span> and the tooling that <span className="text-[#FF5722]">proves they work</span>.
-            </p>
-            
             {/* Quick Access Links */}
             <div className="flex flex-col items-start xl:items-end gap-3 xl:-mr-8 mt-4 xl:mt-12">
               <span className="font-mono text-xs uppercase tracking-widest text-[#0A0A0A] opacity-60">Quick Access</span>
@@ -118,16 +121,20 @@ export function HeroSection() {
         </div>
 
         {/* Subheader: Below name - responsive positioning */}
-        <div className="mt-8 xl:mt-0 xl:absolute xl:top-[calc(15%+clamp(10.8rem,27vw,21.6rem)+2rem)] xl:left-[15%] flex flex-col gap-3 pl-4 sm:pl-8 xl:pl-0">
-          <h2 className="font-sans text-sm sm:text-base md:text-lg font-medium uppercase tracking-wider">
-            AUSTIN, TX • CS @ UT AUSTIN
+        <div className="mt-8 w-full min-w-0 xl:mt-0 xl:absolute xl:top-[calc(15%+clamp(10.8rem,27vw,21.6rem)+2rem)] xl:left-[15%] flex flex-col gap-3 pl-4 sm:pl-8 xl:pl-0">
+          <h2 className="max-w-full break-words font-sans text-sm sm:text-base md:text-lg font-medium uppercase tracking-wider">
+            AUSTIN, TX • CS @ UT AUSTIN <span className="block text-[#0A0A0A] sm:inline">• incoming @ Citadel Securities</span>
           </h2>
-          {/* Social links below - less dominant */}
-          <div className="flex gap-3">
-            <a href="mailto:neevgupta@utexas.edu" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">Email</a>
-            <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">LinkedIn</a>
-            <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">GitHub</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="font-sans text-xs sm:text-sm font-normal border-2 border-[#0A0A0A] px-2 py-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:border-[#FF5722] transition-colors duration-200">Resume</a>
+          <div className="grid w-[calc(100vw-4rem)] max-w-full grid-cols-1 gap-3 pt-2 sm:w-full sm:flex sm:flex-wrap">
+            <a href="mailto:neevgupta@utexas.edu" className="group inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#0A0A0A] bg-[#F5F5F5] px-4 py-2 font-mono text-sm uppercase tracking-wider text-[#0A0A0A] shadow-[4px_4px_0_#FF5722] transition-all duration-200 hover:-translate-y-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:shadow-[6px_6px_0_#0A0A0A] sm:w-auto">
+              <Mail className="h-4 w-4 transition-transform group-hover:rotate-12" /> Email
+            </a>
+            <a href="https://linkedin.com/in/neevgupta" target="_blank" rel="noopener noreferrer" className="group inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#0A0A0A] bg-[#F5F5F5] px-4 py-2 font-mono text-sm uppercase tracking-wider text-[#0A0A0A] shadow-[4px_4px_0_#FF5722] transition-all duration-200 hover:-translate-y-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:shadow-[6px_6px_0_#0A0A0A] sm:w-auto">
+              <Linkedin className="h-4 w-4 transition-transform group-hover:rotate-12" /> LinkedIn
+            </a>
+            <a href="https://github.com/guptaneev" target="_blank" rel="noopener noreferrer" className="group inline-flex w-full items-center justify-center gap-2 rounded-full border-2 border-[#0A0A0A] bg-[#F5F5F5] px-4 py-2 font-mono text-sm uppercase tracking-wider text-[#0A0A0A] shadow-[4px_4px_0_#FF5722] transition-all duration-200 hover:-translate-y-1 hover:bg-[#FF5722] hover:text-[#F5F5F5] hover:shadow-[6px_6px_0_#0A0A0A] sm:w-auto">
+              <Github className="h-4 w-4 transition-transform group-hover:rotate-12" /> GitHub
+            </a>
           </div>
         </div>
 

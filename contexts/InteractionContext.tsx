@@ -23,9 +23,13 @@ export function InteractionProvider({ children }: { children: ReactNode }) {
   console.log("Current active project:", activeProject);
 
   const projectThemes = {
+    "clue-benchmark": {
+      bg: "hsl(0, 0%, 95%)",
+      tagline: "Supported reasoning under uncertainty",
+    },
     "strength-atlas": {
       bg: "hsl(0, 0%, 95%)",
-      tagline: "Evidence for strength training",
+      tagline: "Training decisions, backed by sources",
     },
     pinpoint: {
       bg: "rgba(255, 87, 34, 0.05)", // Warm orange tint

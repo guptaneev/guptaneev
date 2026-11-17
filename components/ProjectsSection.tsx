@@ -2,9 +2,9 @@
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { ExternalLink, Github, LucideIcon, Youtube, Linkedin, FileCode } from "lucide-react";
+import { ExternalLink, Github, LucideIcon } from "lucide-react";
 import { useInteraction } from "@/contexts/InteractionContext";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { Spotlight } from "@/components/ui/Spotlight";
 
 interface LinkItem {
@@ -34,6 +34,23 @@ interface CaseStudy {
 
 const caseStudies: CaseStudy[] = [
   {
+    id: "clue-benchmark",
+    anchorId: "clue-benchmark",
+    title: "Clue Benchmark",
+    thesis:
+      "Synthetic logic puzzles for studying reasoning, uncertainty, and evidence sharing - evaluating whether an agent is supported, not merely lucky.",
+    constraints: ["Python", "Synthetic Data", "Agent Evaluation"],
+    outcome:
+      "Generate a case, certify what the evidence supports, and score correctness, evidential support, abstention, and protocol failures separately. Runs offline without an API key or paid calls.",
+    metric: "REASONING · UNCERTAINTY · EVIDENCE SHARING",
+    imageSrc: "/clue-benchmark-site.png",
+    imageAlt: "Clue Benchmark evidence certification workflow",
+    links: {
+      demo: "https://trustprism.github.io/clue-benchmark/",
+      github: "https://github.com/TrustPrism/clue-benchmark",
+    },
+  },
+  {
     id: "strength-atlas",
     anchorId: "strength-atlas",
     title: "Strength Atlas",
@@ -50,81 +67,46 @@ const caseStudies: CaseStudy[] = [
       github: "https://github.com/guptaneev/strength-atlas",
     },
   },
-  {
-    id: "pinpoint",
-    anchorId: "emergency-response",
-    title: "Pinpoint",
-    thesis:
-      "Concert safety can't wait. Alerts delivered to EMS in <2 seconds.",
-    constraints: ["React Native", "Expo", "TypeScript", "MongoDB"],
-    outcome: "Live heatmaps + instant alerts for 100,000+ attendees",
-    metric: "100,000+ ATTENDEE VENUES · <2S ALERTS",
-    images: ["/pinpoint1.png", "/pinpoint2.png"],
-    imageAlt: "Pinpoint concert safety platform screenshots",
-    links: {
-      github: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
-    },
-  },
-  {
-    id: "stormops-console",
-    anchorId: "stormops-console",
-    title: "StormOps Console",
-    thesis:
-      "Agentic risk-analysis platform that turns weather and grid context into operational directives for energy operators.",
-    constraints: ["Python", "RAG", "Multi-Agent"],
-    outcome: "",
-    imageSrc: "/stormops-console.jpg",
-    imageAlt: "StormOps Console AI grid operations interface",
-    links: {
-      github: "https://github.com/guptaneev/StormOps-Console",
-    },
-  },
-  {
-    id: "nudge",
-    anchorId: "nudge",
-    title: "Nudge",
-    thesis:
-      "IoT pressure monitoring for wheelchair users. ESP32 firmware reads a 16×16 sensor matrix over BLE into a React Native app and Supabase backend.",
-    constraints: ["ESP32", "BLE", "React Native", "Supabase"],
-    outcome: "",
-    metric: "16×16 SENSOR MATRIX · BLE",
-    images: ["/nudge-home.jpg", "/nudge-tracker.jpg"],
-    imageAlt: "Nudge wheelchair pressure monitoring mobile app screens",
-    links: {
-      github: "https://github.com/guptaneev/Nudge",
-    },
-  },
-  {
-    id: "peco",
-    anchorId: "peco-fitness",
-    title: "PeCo",
-    thesis:
-      "Personalized training at scale. RAG-powered AI coach using ChromaDB.",
-    constraints: ["Python", "LangChain", "ChromaDB", "RAG"],
-    outcome: "Gen AI Intensive capstone with search grounding",
-    metric: "40+ DOCUMENTS · 90%+ RETRIEVAL ACCURACY",
-    imageSrc: "/peco.jpg",
-    imageAlt: "PeCo AI fitness coach interface",
-    links: {
-      demo: { url: "https://www.youtube.com/watch?v=FMurg0jzzXQ", icon: Youtube },
-      blog: { url: "https://www.linkedin.com/pulse/how-can-we-use-generative-ai-gym-neev-gupta-iurnc/", icon: Linkedin },
-      kaggle: { url: "https://www.kaggle.com/code/guptaneev/peco-gen-ai-intensive-course-capstone", icon: FileCode },
-    },
-  },
 ];
 
 export function CaseStudiesSection() {
-  const { activeProject, projectThemes } = useInteraction();
+  const { activeProject, setActiveProject, projectThemes } = useInteraction();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const cards = Array.from(section.querySelectorAll<HTMLElement>("[data-project-id]"));
+    const intersections = new Map<Element, IntersectionObserverEntry>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => intersections.set(entry.target, entry));
+
+        const visible = Array.from(intersections.values())
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visible) {
+          setActiveProject(visible.target.getAttribute("data-project-id"));
+        }
+      },
+      { rootMargin: "-20% 0px -20% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    cards.forEach((card) => observer.observe(card));
+    return () => observer.disconnect();
+  }, [setActiveProject]);
   
-  // Tagline depends on hover state
+  // Tagline follows the card currently entering the viewport as the user scrolls.
   const sectionTitle = activeProject
     ? projectThemes[activeProject]?.tagline || "Selected Projects"
     : "Selected Projects";
 
   return (
-    <section className="relative py-32 px-4 sm:px-6 lg:px-8">
+    <section ref={sectionRef} className="relative py-32 px-4 sm:px-6 lg:px-8">
       {/* Sticky Header - Responsive sizing */}
-      <div className="sticky top-4 sm:top-8 z-40 mb-8 sm:mb-16 lg:mb-24 pointer-events-none">
+      <div className="project-title-scroll-follow z-40 -mx-4 sm:-mx-6 lg:-mx-8 mb-8 sm:mb-16 lg:mb-24 bg-background px-4 py-4 sm:px-6 lg:px-8 pointer-events-none">
         <motion.h2
           key={sectionTitle} // Trigger animation on change
           initial={{ y: 20, opacity: 0 }}
@@ -157,7 +139,6 @@ function CaseStudyCard({
   study: CaseStudy;
   isReversed: boolean;
 }) {
-  const { setActiveProject } = useInteraction();
   const ref = useRef(null);
   
   // Parallax Effect
@@ -173,8 +154,7 @@ function CaseStudyCard({
     <motion.article
       ref={ref}
       style={{ opacity }}
-      onMouseEnter={() => setActiveProject(study.id)}
-      onMouseLeave={() => setActiveProject(null)}
+      data-project-id={study.id}
       id={study.anchorId}
       className={`relative grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center z-10 ${
         isReversed ? "lg:grid-flow-dense" : ""
@@ -206,7 +186,11 @@ function CaseStudyCard({
                         className="object-cover transition-transform duration-700"
                     />
                 </div>
-            ) : null}
+            ) : (
+              <div className="flex aspect-[16/9] items-end border-2 border-[#FF5722] bg-[#0A0A0A] p-6 font-mono text-sm uppercase tracking-widest text-[#F5F5F5]">
+                <span><span className="text-[#FF5722]">01 //</span> evidence in, support out</span>
+              </div>
+            )}
             </motion.div>
         </Spotlight>
       </div>

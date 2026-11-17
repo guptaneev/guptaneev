@@ -9,99 +9,52 @@ interface Experience {
   role: string;
   outcome: string | string[];
   techStack?: string;
+  descriptionLink?: { label: string; url: string };
   links?: { label: string; url: string }[];
 }
 
 const experiences: Experience[] = [
   {
-    date: "Sep 2026–Present",
-    company: "Base44",
-    role: "Campus Impact Leader",
-    outcome: "Growing Base44 at UT Austin.",
-    techStack: "Applied AI, Community",
+    date: "Summer 2027",
+    company: "Citadel Securities",
+    role: "Software Engineering Intern",
+    outcome: "Incoming software engineering intern",
   },
   {
     date: "Dec 2025–Present",
     company: "UT Austin: Trust Prism",
     role: "Undergraduate Research Assistant",
     outcome:
-      "Built the constraint solver for experiments, guaranteeing puzzles have one solution",
+      "LLM benchmarking & CSP solver",
+    descriptionLink: {
+      label: "https://trustprism.github.io/clue-benchmark/",
+      url: "https://trustprism.github.io/clue-benchmark/",
+    },
     techStack: "Python, PyTorch, Multi-agent systems",
   },
   {
     date: "Jun 2026–Aug 2026",
     company: "State Farm",
     role: "Software Engineering Intern - Data & AI",
-    outcome: "Architected evaluation infrastructure for AI agents across data, semantic-layer, tool-use, and answer-quality dimensions.",
+    outcome: "Multi-agent evals & LLM-as-a-judge",
     techStack: "Data Engineering, AI/ML, Python, LLM Evaluation",
   },
   {
-    date: "Feb 2026–May 2026",
-    company: "TRNDG",
-    role: "Software Engineering Intern",
-    outcome: "Trade trends like stocks.",
-    techStack: "React Native, Expo, Node.js, Supabase",
-  },
-  {
-    date: "Sept 2025–May 2026",
-    company: "Texas Convergent",
-    role: "Software Engineer",
-    outcome: [
-      "Launched Pinpoint: live crowd heatmaps and direct-to-EMS alerts for safer large events.",
-      "Built Nudge: an IoT pressure-monitoring system for wheelchair users with BLE + React Native. Won Best Business ($200).",
-    ],
-    techStack: "React Native, Expo, Node.js, MongoDB, BLE, Embedded C",
-    links: [
-      {
-        label: "View Pinpoint",
-        url: "https://github.com/Texas-Convergent-Emergency-Team/Pinpoint",
-      },
-      {
-        label: "View Nudge",
-        url: "https://github.com/guptaneev/Nudge",
-      },
-    ],
-  },
-  {
-    date: "Summer 2025",
+    date: "Jun 2025–Aug 2025",
     company: "H-E-B Digital",
     role: "Software Engineering Intern",
-    outcome: "Built intranet modules serving 120k daily active employees.",
+    outcome: "PartnerNet intranet",
     techStack: "React, TypeScript, Salesforce Apex",
-  },
-  {
-    date: "Summer 2024",
-    company: "Zonda Home",
-    role: "Software Engineering Intern",
-    outcome: "Architected housing analytics engine for 50+ metro regions.",
-    techStack: "Angular, Java, REST APIs",
-    links: [{ label: "View Project", url: "https://github.com/guptaneev/adoore" }],
   },
 ];
 
 export function ExperienceSection() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [isAnyHovered, setIsAnyHovered] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start 20%", "end 50%"],
   });
-
-  const handleHoverStart = () => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    setIsAnyHovered(true);
-  };
-
-  const handleHoverEnd = () => {
-    // Wait 3s before allowing animation to restart
-    timeoutRef.current = setTimeout(() => {
-      setIsAnyHovered(false);
-    }, 3000);
-  };
 
   return (
     <section className="experience-section py-32 px-4 sm:px-6 lg:px-8 bg-background" ref={containerRef}>
@@ -126,9 +79,6 @@ export function ExperienceSection() {
               <ExperienceItem 
                 key={index} 
                 experience={exp} 
-                isAnyHovered={isAnyHovered}
-                onHoverStart={handleHoverStart}
-                onHoverEnd={handleHoverEnd}
               />
             ))}
           </div>
@@ -140,28 +90,16 @@ export function ExperienceSection() {
 
 function ExperienceItem({ 
   experience, 
-  isAnyHovered,
-  onHoverStart,
-  onHoverEnd 
 }: { 
   experience: Experience;
-  isAnyHovered: boolean;
-  onHoverStart: () => void;
-  onHoverEnd: () => void;
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       className="group relative grid grid-cols-1 lg:grid-cols-2 gap-8"
-      onMouseEnter={() => {
-        setIsHovered(true);
-        onHoverStart();
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-        onHoverEnd();
-      }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Left Column - Always Visible */}
       <div className="relative pl-16">
@@ -175,7 +113,7 @@ function ExperienceItem({
         {/* Company, Date, Role */}
         <div className="border-b border-border pb-8 group-hover:border-[#FF5722] transition-colors duration-300">
           <div className="mb-4">
-            <h3 className={`font-sans font-bold text-2xl sm:text-3xl transition-colors inline-block ${!isAnyHovered ? 'shine-text' : 'text-foreground'} ${isHovered ? 'text-[#FF5722]' : ''}`}>
+            <h3 className={`font-sans font-bold text-2xl sm:text-3xl transition-colors inline-block text-foreground ${isHovered ? 'text-[#FF5722]' : ''}`}>
               {experience.company}
             </h3>
             <div className="font-mono text-xs text-foreground/50 mt-1 uppercase tracking-wider">
@@ -211,6 +149,17 @@ function ExperienceItem({
               {experience.outcome}
             </div>
           ))}
+
+        {experience.descriptionLink && (
+          <a
+            href={experience.descriptionLink.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mb-4 block font-serif text-lg sm:text-xl leading-relaxed text-[#FF5722] underline decoration-1 underline-offset-4"
+          >
+            {experience.descriptionLink.label}
+          </a>
+        )}
 
         {/* Tech Stack */}
         {experience.techStack && (
