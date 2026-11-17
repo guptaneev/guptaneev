@@ -1,12 +1,3 @@
-### Hey, I'm Neev 👋
-
-CS + Economics @ UT Austin '28. Right now I'm studying human-AI trust research at **UT Austin: Trust Prism**.
-
-Previously AI/ML @ State Farm, SWE @ TRNDG, H-E-B, Zonda
-
-Most of what I build is AI systems plus the tooling that proves they actually work —
-evaluators, constraint solvers, retrieval pipelines, and the backends underneath them.
-
 [Portfolio](https://neevgupta.com) · [LinkedIn](https://linkedin.com/in/neevgupta)
 
 ---
