@@ -17,7 +17,7 @@ export function AboutSection() {
           </div>
 
           {/* Visual - Portrait */}
-          <div id="about-portrait-anchor" className="lg:col-span-3 relative group ml-0 lg:-ml-16 xl:-ml-24">
+          <div id="about-portrait-anchor" className="lg:col-span-3 relative group">
             <div className="relative w-full aspect-[3/4] overflow-hidden">
                <Image
                   id="about-portrait"

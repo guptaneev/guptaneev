@@ -5,7 +5,7 @@ import { Github, Linkedin, Mail } from "lucide-react";
 
 export function HeroSection() {
   const [mounted, setMounted] = useState(false);
-  const [lineHeight, setLineHeight] = useState("0px");
+  const [rails, setRails] = useState({ height: 0, left: 0 });
 
   // Smooth scroll handler
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
@@ -41,29 +41,35 @@ export function HeroSection() {
   useEffect(() => {
     setMounted(true);
 
-    const updateLineHeight = () => {
+    const updateRails = () => {
       const portraitAnchor = document.getElementById("about-portrait-anchor");
       if (portraitAnchor) {
-        const top = portraitAnchor.getBoundingClientRect().top + window.scrollY;
-        setLineHeight(`${Math.max(0, Math.round(top))}px`);
+        const { top, left, right } = portraitAnchor.getBoundingClientRect();
+        const root = document.documentElement;
+        const rem = parseFloat(getComputedStyle(root).fontSize);
+        const preferredLeft = root.clientWidth * 0.15 - (window.matchMedia("(min-width: 1536px)").matches ? 3 : 6) * rem;
+        setRails({
+          height: Math.max(0, top + window.scrollY),
+          left: Math.max(left + 4, Math.min(preferredLeft, right - rem - 7)),
+        });
       }
     };
 
     const frame = window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(updateLineHeight);
+      window.requestAnimationFrame(updateRails);
     });
-    const timeout = window.setTimeout(updateLineHeight, 600);
-    window.addEventListener("resize", updateLineHeight);
+    const timeout = window.setTimeout(updateRails, 600);
+    window.addEventListener("resize", updateRails);
 
     const portraitAnchor = document.getElementById("about-portrait-anchor");
-    const observer = portraitAnchor ? new ResizeObserver(updateLineHeight) : null;
+    const observer = portraitAnchor ? new ResizeObserver(updateRails) : null;
     observer?.observe(portraitAnchor as Element);
-    document.fonts?.ready.then(updateLineHeight);
+    document.fonts?.ready.then(updateRails);
 
     return () => {
       window.cancelAnimationFrame(frame);
       window.clearTimeout(timeout);
-      window.removeEventListener("resize", updateLineHeight);
+      window.removeEventListener("resize", updateRails);
       observer?.disconnect();
     };
   }, []);
@@ -80,13 +86,8 @@ export function HeroSection() {
     <section className="min-h-[64vh] xl:h-[64vh] relative bg-[#E8E8E8] text-[#0A0A0A] font-sans selection:bg-[#FF5722] selection:text-white">
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute left-[calc(15%_-_5rem)] top-0 z-30 hidden w-[3px] bg-[#FF5722] xl:block 2xl:left-[calc(15%_-_2rem)]"
-        style={{ height: lineHeight }}
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute left-[calc(15%_-_6rem)] top-0 z-30 hidden w-[3px] bg-[#FF5722] xl:block 2xl:left-[calc(15%_-_3rem)]"
-        style={{ height: lineHeight }}
+        className="pointer-events-none absolute top-0 z-30 hidden w-[calc(1rem+3px)] border-x-[3px] border-[#FF5722] xl:block"
+        style={rails}
       />
 
       <div className="relative z-10 flex h-full min-w-0 w-full flex-col p-6 sm:p-8 xl:p-12">
